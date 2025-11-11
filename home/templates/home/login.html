@@ -1,0 +1,26 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'home/css/login.css'%}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <form action="" method="POST">
+                {%csrf_token%}
+                <input type="email" name="" placeholder="Email" required autocomplete="off">
+                <input type="password" name="" placeholder="Senha" required minlength="8">
+                <div class="options">
+                    <a href="" target="_blank">Criar conta</a>
+                    <a href="">Esqueci minha senha</a>
+                </div>
+                <button>Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

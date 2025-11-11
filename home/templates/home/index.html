@@ -1,0 +1,476 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="{%static 'home/css/index.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div>
+                    <h1 class="logo">
+                        <i class="fas fa-book-open icon-mr"></i>Biblioteca Digital
+                    </h1>
+                    <p class="subtitle">Sistema de Gestão de Acervo</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" placeholder="Buscar livro..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user user-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h2 class="sidebar-title">Menu</h2>
+                    <ul class="menu-list">
+                        <li>
+                            <a href="#" class="menu-item active">
+                                <i class="fas fa-book menu-icon"></i>
+                                <span>Cadastrar Livro</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-item">
+                                <i class="fas fa-list menu-icon"></i>
+                                <span>Lista de Livros</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-item">
+                                <i class="fas fa-users menu-icon"></i>
+                                <span>Usuários</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-item">
+                                <i class="fas fa-exchange-alt menu-icon"></i>
+                                <span>Empréstimos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-item">
+                                <i class="fas fa-chart-bar menu-icon"></i>
+                                <span>Relatórios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats-card">
+                    <h2 class="sidebar-title">Estatísticas</h2>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <p class="stat-label">Livros cadastrados</p>
+                            <p class="stat-value">1,248</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-label">Empréstimos ativos</p>
+                            <p class="stat-value">87</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-label">Atrasos</p>
+                            <p class="stat-value">12</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <button id="register-tab" class="tab-button active-tab">
+                        <i class="fas fa-plus-circle icon-mr"></i>Cadastrar Livro
+                    </button>
+                    <button id="history-tab" class="tab-button">
+                        <i class="fas fa-history icon-mr"></i>Histórico
+                    </button>
+                </div>
+
+                <!-- Register Book Form -->
+                <div id="register-section" class="form-section">
+                    <div class="form-card">
+                        <h2 class="form-title">Informações do Livro</h2>
+                        <form id="book-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="title" class="form-label">Título*</label>
+                                    <input type="text" id="title" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="author" class="form-label">Autor*</label>
+                                    <input type="text" id="author" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="isbn" class="form-label">ISBN*</label>
+                                    <input type="text" id="isbn" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="publisher" class="form-label">Editora</label>
+                                    <input type="text" id="publisher" class="form-input">
+                                </div>
+
+                                 <div class="form-group">
+                                    <label for="category" class="form-label">Categoria</label>
+                                    <select id="category" class="form-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="fiction">Ficção</option>
+                                        <option value="non-fiction">Não-ficção</option>
+                                        <option value="science">Ciência</option>
+                                        <option value="history">História</option>
+                                        <option value="biography">Biografia</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Data de Devolução</label>
+                                    <input type="date" id="" min="1000" max="2099" class="form-input">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="description" class="form-label">Descrição</label>
+                                    <textarea id="description" rows="3" class="form-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="reset" class="btn-secondary">
+                                    Limpar
+                                </button>
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-save icon-mr"></i>Salvar Livro
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Recently Added Books -->
+                    <div class="recent-books">
+                        <div class="recent-header">
+                            <h2 class="form-title">Adicionados Recentemente</h2>
+                            <a href="#" class="view-all">Ver todos</a>
+                        </div>
+                        <div class="books-grid">
+                            <!-- Book Card 1 -->
+                            <div class="book-card">
+                                <div class="book-content">
+                                    <div class="book-header">
+                                        <div>
+                                            <h3 class="book-title">O Nome do Vento</h3>
+                                            <p class="book-author">Patrick Rothfuss</p>
+                                        </div>
+                                        <span class="status-badge available">Disponível</span>
+                                    </div>
+                                    <div class="book-details">
+                                        <i class="fas fa-barcode icon-mr"></i>
+                                        <span>978-8576572008</span>
+                                    </div>
+                                    <div class="book-footer">
+                                        <span class="book-year">2007</span>
+                                        <span class="book-copies">3 cópias</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Book Card 2 -->
+                            <div class="book-card">
+                                <div class="book-content">
+                                    <div class="book-header">
+                                        <div>
+                                            <h3 class="book-title">Sapiens</h3>
+                                            <p class="book-author">Yuval Noah Harari</p>
+                                        </div>
+                                        <span class="status-badge borrowed">Emprestado</span>
+                                    </div>
+                                    <div class="book-details">
+                                        <i class="fas fa-barcode icon-mr"></i>
+                                        <span>978-8525432183</span>
+                                    </div>
+                                    <div class="book-footer">
+                                        <span class="book-year">2011</span>
+                                        <span class="book-copies">5 cópias</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Book Card 3 -->
+                            <div class="book-card">
+                                <div class="book-content">
+                                    <div class="book-header">
+                                        <div>
+                                            <h3 class="book-title">1984</h3>
+                                            <p class="book-author">George Orwell</p>
+                                        </div>
+                                        <span class="status-badge available">Disponível</span>
+                                    </div>
+                                    <div class="book-details">
+                                        <i class="fas fa-barcode icon-mr"></i>
+                                        <span>978-8535914849</span>
+                                    </div>
+                                    <div class="book-footer">
+                                        <span class="book-year">1949</span>
+                                        <span class="book-copies">2 cópias</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loan History Section (Hidden by default) -->
+                <div id="history-section" class="form-section hidden">
+                    <div class="history-card">
+                        <div class="history-header">
+                            <h2 class="form-title">Histórico de Empréstimos</h2>
+                            <div class="history-filters">
+                                <div class="filter-group">
+                                    <select class="filter-select">
+                                        <option>Filtrar por status</option>
+                                        <option>Ativos</option>
+                                        <option>Concluídos</option>
+                                        <option>Atrasados</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-icon"></i>
+                                </div>
+                                <div class="filter-group">
+                                    <input type="text" placeholder="Buscar livro..." class="filter-input">
+                                    <i class="fas fa-search filter-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="history-table">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th scope="col" class="table-heading">Livro</th>
+                                        <th scope="col" class="table-heading">Usuário</th>
+                                        <th scope="col" class="table-heading">Data Empréstimo</th>
+                                        <th scope="col" class="table-heading">Data Devolução</th>
+                                        <th scope="col" class="table-heading">Status</th>
+                                        <th scope="col" class="table-heading">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-body">
+                                    <!-- History Item 1 -->
+                                    <tr class="history-item">
+                                        <td class="table-cell">
+                                            <div class="book-info">
+                                                <div class="book-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <div class="book-details-cell">
+                                                    <div class="book-name">O Nome do Vento</div>
+                                                    <div class="book-author-cell">Patrick Rothfuss</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table-cell">
+                                            <div class="user-name">Maria Silva</div>
+                                            <div class="user-id">RA: 20230001</div>
+                                        </td>
+                                        <td class="table-cell">
+                                            15/05/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            30/05/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            <span class="status-tag returned">
+                                                Devolvido
+                                            </span>
+                                        </td>
+                                        <td class="table-cell actions-cell">
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-print"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- History Item 2 -->
+                                    <tr class="history-item">
+                                        <td class="table-cell">
+                                            <div class="book-info">
+                                                <div class="book-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <div class="book-details-cell">
+                                                    <div class="book-name">Sapiens</div>
+                                                    <div class="book-author-cell">Yuval Noah Harari</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table-cell">
+                                            <div class="user-name">João Oliveira</div>
+                                            <div class="user-id">RA: 20230045</div>
+                                        </td>
+                                        <td class="table-cell">
+                                            10/06/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            25/06/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            <span class="status-tag borrowed">
+                                                Emprestado
+                                            </span>
+                                        </td>
+                                        <td class="table-cell actions-cell">
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-print"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- History Item 3 -->
+                                    <tr class="history-item">
+                                        <td class="table-cell">
+                                            <div class="book-info">
+                                                <div class="book-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <div class="book-details-cell">
+                                                    <div class="book-name">1984</div>
+                                                    <div class="book-author-cell">George Orwell</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table-cell">
+                                            <div class="user-name">Ana Costa</div>
+                                            <div class="user-id">RA: 20230078</div>
+                                        </td>
+                                        <td class="table-cell">
+                                            22/05/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            05/06/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            <span class="status-tag overdue">
+                                                Atrasado
+                                            </span>
+                                        </td>
+                                        <td class="table-cell actions-cell">
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-print"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- History Item 4 -->
+                                    <tr class="history-item">
+                                        <td class="table-cell">
+                                            <div class="book-info">
+                                                <div class="book-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <div class="book-details-cell">
+                                                    <div class="book-name">O Hobbit</div>
+                                                    <div class="book-author-cell">J.R.R. Tolkien</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table-cell">
+                                            <div class="user-name">Carlos Mendes</div>
+                                            <div class="user-id">RA: 20230112</div>
+                                        </td>
+                                        <td class="table-cell">
+                                            03/06/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            18/06/2023
+                                        </td>
+                                        <td class="table-cell">
+                                            <span class="status-tag returned">
+                                                Devolvido
+                                            </span>
+                                        </td>
+                                        <td class="table-cell actions-cell">
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-print"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <div class="pagination-info">
+                                Mostrando <span class="pagination-number">1</span> a <span
+                                    class="pagination-number">4</span> de <span class="pagination-number">24</span>
+                                resultados
+                            </div>
+                            <div class="pagination-controls">
+                                <button class="pagination-btn">Anterior</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <button class="pagination-btn">Próximo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const registerTab = document.getElementById('register-tab');
+            const historyTab = document.getElementById('history-tab');
+            const registerSection = document.getElementById('register-section');
+            const historySection = document.getElementById('history-section');
+
+            // Show register section by default
+            registerSection.classList.remove('hidden');
+            historySection.classList.add('hidden');
+
+            // Tab click handlers
+            registerTab.addEventListener('click', function (e) {
+                e.preventDefault();
+                registerSection.classList.remove('hidden');
+                historySection.classList.add('hidden');
+                registerTab.classList.add('active-tab');
+                historyTab.classList.remove('active-tab');
+            });
+
+            historyTab.addEventListener('click', function (e) {
+                e.preventDefault();
+                registerSection.classList.add('hidden');
+                historySection.classList.remove('hidden');
+                registerTab.classList.remove('active-tab');
+                historyTab.classList.add('active-tab');
+            });
+
+            // Form submission handler
+            const bookForm = document.getElementById('book-form');
+            bookForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form values
+                const title = document.getElementById('title').value;
+                const author = document.getElementById('author').value;
+                const isbn = document.getElementById('isbn').value;
+
+                // In a real app, you would send this data to a server
+                alert(`Livro "${title}" por ${author} (ISBN: ${isbn}) cadastrado com sucesso!`);
+
+                // Reset form
+                bookForm.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>

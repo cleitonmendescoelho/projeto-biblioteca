@@ -1,0 +1,704 @@
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset e configurações base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f9fafb;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Header */
+.header {
+    margin-bottom: 2.5rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 0.25rem;
+}
+
+.icon-mr {
+    margin-right: 0.5rem;
+}
+
+.subtitle {
+    color: #6b7280;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid #d1d5db;
+    width: 100%;
+    min-width: 200px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #4f46e5;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    color: #9ca3af;
+}
+
+.user-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon {
+    color: #4f46e5;
+}
+
+/* Layout principal */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .main-layout {
+        flex-direction: row;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        width: 25%;
+    }
+}
+
+.sidebar-card, .stats-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+}
+
+.stats-card {
+    margin-top: 1.5rem;
+}
+
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #374151;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #374151;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #f3f4f6;
+}
+
+.menu-item.active {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.menu-icon {
+    width: 1.25rem;
+}
+
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+/* Conteúdo principal */
+.main-content {
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .main-content {
+        width: 75%;
+    }
+}
+
+.tabs-container {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+}
+
+.tab-button {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.tab-button:hover {
+    color: #4f46e5;
+}
+
+.active-tab {
+    border-bottom: 3px solid #4f46e5;
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+/* Formulário */
+.form-section {
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-card, .recent-books, .history-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #374151;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-label {
+    width: 100%;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #4f46e5;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #374151;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #f9fafb;
+}
+
+.btn-primary {
+    padding: 0.5rem 1rem;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4f46e5, 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Cards de livros */
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.view-all {
+    font-size: 0.875rem;
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    color: #3730a3;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .books-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .books-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.book-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.book-content {
+    padding: 1rem;
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.book-title {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #374151;
+}
+
+.book-author {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+}
+
+.available {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.borrowed {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.book-details {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.book-footer {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-year {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.book-copies {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Histórico */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.history-filters {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-group {
+    position: relative;
+}
+
+.filter-select {
+    appearance: none;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #4f46e5;
+}
+
+.select-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.filter-input {
+    padding-left: 2rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #4f46e5;
+}
+
+.filter-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+/* Tabela */
+.table-container {
+    overflow-x: auto;
+}
+
+.history-table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    background-color: #f9fafb;
+}
+
+.table-heading {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-body {
+    background-color: white;
+    border-collapse: collapse;
+}
+
+.table-cell {
+    padding: 1rem 1.5rem;
+    white-space: nowrap;
+    font-size: 0.875rem;
+}
+
+.history-item {
+    transition: background-color 0.2s;
+}
+
+.history-item:hover {
+    background-color: #f9fafb;
+}
+
+.history-item:nth-child(odd) {
+    background-color: #f9fafb;
+}
+
+.book-info {
+    display: flex;
+    align-items: center;
+}
+
+.book-icon {
+    flex-shrink: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #e0e7ff;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-icon i {
+    color: #4f46e5;
+}
+
+.book-details-cell {
+    margin-left: 1rem;
+}
+
+.book-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+.book-author-cell {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.user-name {
+    font-size: 0.875rem;
+    color: #111827;
+}
+
+.user-id {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.status-tag {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    display: inline-flex;
+}
+
+.returned {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.borrowed {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.overdue {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.actions-cell {
+    text-align: right;
+}
+
+.action-btn {
+    color: #4f46e5;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.75rem;
+}
+
+.action-btn:hover {
+    color: #3730a3;
+}
+
+.action-btn:last-child {
+    margin-right: 0;
+    color: #6b7280;
+}
+
+.action-btn:last-child:hover {
+    color: #374151;
+}
+
+/* Paginação */
+.pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination-info {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.pagination-number {
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination-btn {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination-btn:hover {
+    background-color: #f9fafb;
+}
+
+.pagination-btn.active {
+    border-color: #4f46e5;
+    background-color: #e0e7ff;
+    color: #4f46e5;
+}

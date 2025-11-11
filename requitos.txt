@@ -1,0 +1,61 @@
+REQUISITOS FUNCIONAIS
+
+-> Camadas
+* Login
+* Cadastro
+* Recuperação de senha
+* Painel (usuário)
+* Painel (Admin)
+
+-> Interface de usuário (Login)
+    - Email
+    - Senha
+    - Recuperar Senha
+    - Criar Conta
+    - Alternativas de login (3)
+Ao logar o usuário vai direto para a página de user-admin no qual irá poder consultar o status e criar novos registros.
+
+-> INTERFACE DE CADASTRO
+
+* Campo Nome
+* Campo sobrenome
+* Campo idade
+* Campo CPF
+* Campo telefone
+* Email
+* Campo Senha
+
+-> INTERFACE DE RECUPERAÇÃO DE SENHA
+
+* Email de verificação
+* 
+
+-> INTERFACE DE USUÁRIO (Painel)
+
+* O usuário terá um formulário para cadastro de novos livros com os campos:
+    - Nome do livro
+    - Codigo do livro
+    - Categoria
+
+Quando o usuário criar em reservar livro a aplicação deve registrar a data e a hora em que foi realizado o registro.
+
+* A aplicação vai conter uma consulta de status que irá gerar o status atual (livros que estão em uso) e o histórico
+anteriores de livros que foram imprestados. O histórico irá ter os seguintes registros:
+
+    -Nome do livro
+    -codigo do livro
+    Data do cadastro
+    Hora do cadastro
+    Data da devolução
+    Horários da devolução
+    Status (concluido ou pendente)
+
+* A aplicação deve fornecer as opções de edição e exclusão do cadastro do livro antes de gerar o registro
+* Permitir que o usuario filte por data,ano e mês
+* Permitir que p usuário faça o download do histórico em formato PDF
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* A aplicação deve verificar se os dados de login preenchidos na tela de login existem na tabela cadastro. Caso o cadastro existe o login é efetuado e o usuário encaminhado
+para o painel principal.
+
+
