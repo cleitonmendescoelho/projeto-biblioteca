@@ -1,2 +1,6 @@
+# Profiles
+env/
 __pycache__/
+
+# Files
 requisitos.txt
