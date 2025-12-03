@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -73,15 +74,17 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Database configuration using environment variables.
+# Defaults match the `docker-compose.yaml` MySQL service.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'biblioteca',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'PASSWORD': '123456',
-    }
+        'NAME': os.environ.get('DB_NAME', 'biblioteca'),
+        'USER': os.environ.get('DB_USER', 'user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
+        'PORT': os.environ.get('DB_PORT', '3307'),
+        }
 }
 
 
