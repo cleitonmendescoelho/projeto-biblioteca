@@ -1,0 +1,24 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'home/css/cadastro.css'%}">
+</head>
+<body>
+    <div class="container">
+        <form action="/cadastro_livro" method="POST">
+            {%csrf_token%}
+            <input type="text" name="nome" placeholder="Nome" required maxlength="10">
+            <input type="text" name="sobrenome" placeholder="Sobrenome" required maxlength="10">
+            <input type="date" name="data" placeholder="Data de nascimento" required>
+            <input type="text" name="cpf" placeholder="CPF" required maxlength="11">
+            <input type="text" name="telefone" placeholder="Telefone" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="senha" required  autocomplete="off">
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>
