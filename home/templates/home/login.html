@@ -10,13 +10,13 @@
 <body>
     <div class="container">
         <div class="login">
-            <form action="" method="POST">
+            <form action="{% url 'user-login'%}" method="POST">
                 {%csrf_token%}
-                <input type="email" name="" placeholder="Email" required autocomplete="off">
-                <input type="password" name="" placeholder="Senha" required minlength="8">
+                <input type="email" name="email" placeholder="Email" required autocomplete="off">
+                <input type="password" name="senha" placeholder="Senha" required minlength="8">
                 <div class="options">
-                    <a href="" target="_blank">Criar conta</a>
-                    <a href="">Esqueci minha senha</a>
+                    <a href="{% url 'cadastro'%}" target="_blank">Criar conta</a>
+                    <a href="{% url 'senha'%}">Esqueci minha senha</a>
                 </div>
                 <button>Entrar</button>
             </form>

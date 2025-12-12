@@ -10,7 +10,7 @@ def cadastro(request):
     return render(request, 'home/cadastro.html')
 
 def recuperacao_senha(request):
-    return render(request, 'home/user_senha.html')
+    return render(request, 'home/rec_senha.html')
 
 def painel(request):
     return render(request, 'home/index.html')
@@ -34,7 +34,7 @@ def criar_cadastro(request):
             email =  email,
             senha = senha
         )
-        return redirect('index')
+        return redirect('login')
     
     teste = user_cadastro.objects.all()
     return render(request, "home/cadastro.html", {"cadastro": teste}) 
@@ -50,15 +50,15 @@ def user_login(request):
 
             # Verifica se a senha digitada bate com o hash salvo
             if check_password(senha, user.senha):
-                # Aqui você pode salvar a sessão do usuário
-                request.session['usuario_id'] = user.id
-                request.session['usuario_nome'] = user.nome
-                return redirect('usuario')  # Redireciona para a página inicial
+                # Gerenciamento de seções do usuário
+                # request.session['usuario_id'] = user.id
+                # request.session['usuario_nome'] = user.nome
+                return redirect('painel')  # Redireciona para a página inicial
             else:
-                return render(request, 'home/admin.html', {'erro': 'Senha incorreta.'})
+                return render(request, 'home/login.html', {'erro': 'Senha incorreta.'})
 
         except user_cadastro.DoesNotExist:
-            return render(request, 'home/admin.html', {'erro': 'Usuário não encontrado.'})
+            return render(request, 'home/login.html', {'erro': 'Usuário não encontrado.'})
 
-    return render(request, 'home/admin.html')
+    return render(request, 'home/index.html')
     

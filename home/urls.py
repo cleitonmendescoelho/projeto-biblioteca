@@ -6,6 +6,6 @@ urlpatterns = [
     path('cadastro', views.cadastro, name='cadastro'),
     path('senha', views.recuperacao_senha, name='senha'),
     path('painel', views.painel, name='painel'),
-    path('', views.criar_cadastro, name='cadastro'),
-    path('login', views.user_login, name='login'),
+    path('user-cadastro', views.criar_cadastro, name='user-cadastro'),
+    path('login', views.user_login, name='user-login'),
 ]
