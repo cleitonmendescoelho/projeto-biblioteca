@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'home/css/login.css'%}">
+    <link rel="stylesheet" href="{%static 'home/css/inicial/login.css'%}">
     <title>Login</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="login">
             <form action="{% url 'user-login'%}" method="POST">
                 {%csrf_token%}
-                <input type="email" name="email" placeholder="Email" required autocomplete="off">
+                <input type="email" name="email" placeholder="Email" required autocomplete="on">
                 <input type="password" name="senha" placeholder="Senha" required minlength="8">
                 <div class="options">
                     <a href="{% url 'cadastro'%}" target="_blank">Criar conta</a>

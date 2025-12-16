@@ -1,0 +1,88 @@
+DOCKERFILE
+
+FROM python:3.13-slim
+
+WORKDIR /app
+
+# Impedir que o Python gere arquivos .pyc e bufferize a saída
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y --no-install-recommends\
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt ./
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copiar o projeto para o diretorio de trabalho
+COPY . .
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
+------------------------------------------------------------------
+COMPOSE
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_biblioteca
+    restart: always
+    environment:
+      MYSQL_DATABASE: biblioteca
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django_biblioteca
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: biblioteca
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_PORT: 3306
+
+volumes:
+  db_data:
+------------------------------------------------------------------
+
+SETTINGS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'biblioteca',
+        # 'USER': 'root',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
+        # 'PASSWORD': '123456',
+        
+        'NAME': os.environ.get('DB_NAME', 'biblioteca'),
+        'USER': os.environ.get('DB_USER', 'user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
+        'PORT': os.environ.get('DB_PORT', '3306'),
+    }
+}

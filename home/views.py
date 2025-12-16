@@ -4,16 +4,19 @@ from django.contrib.auth.hashers import make_password, check_password
 from .models import user_cadastro
 
 def login(request):
-    return render(request, 'home/login.html')
+    return render(request, 'home/user/login.html')
 
 def cadastro(request):
-    return render(request, 'home/cadastro.html')
+    return render(request, 'home/user/cadastro.html')
 
 def recuperacao_senha(request):
-    return render(request, 'home/rec_senha.html')
+    return render(request, 'home/user/rec_senha.html')
 
 def painel(request):
     return render(request, 'home/index.html')
+
+def historico(request):
+    return render(request, 'home/sections/historico.html')
 
 def criar_cadastro(request):
     if request.method == "POST":
@@ -37,7 +40,7 @@ def criar_cadastro(request):
         return redirect('login')
     
     teste = user_cadastro.objects.all()
-    return render(request, "home/cadastro.html", {"cadastro": teste}) 
+    return render(request, "home/user/cadastro.html", {"cadastro": teste}) 
 
 def user_login(request):
     if request.method == 'POST':
@@ -55,10 +58,10 @@ def user_login(request):
                 # request.session['usuario_nome'] = user.nome
                 return redirect('painel')  # Redireciona para a página inicial
             else:
-                return render(request, 'home/login.html', {'erro': 'Senha incorreta.'})
+                return render(request, 'home/user/login.html', {'erro': 'Senha incorreta.'})
 
         except user_cadastro.DoesNotExist:
-            return render(request, 'home/login.html', {'erro': 'Usuário não encontrado.'})
+            return render(request, 'home/user/login.html', {'erro': 'Usuário não encontrado.'})
 
     return render(request, 'home/index.html')
     

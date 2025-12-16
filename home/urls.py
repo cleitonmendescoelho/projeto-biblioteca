@@ -8,4 +8,5 @@ urlpatterns = [
     path('painel', views.painel, name='painel'),
     path('user-cadastro', views.criar_cadastro, name='user-cadastro'),
     path('login', views.user_login, name='user-login'),
+    path('historico', views.historico, name='historico'),
 ]
