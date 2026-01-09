@@ -3,10 +3,10 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.login, name='login'),
-    path('cadastro', views.cadastro, name='cadastro'),
-    path('senha', views.recuperacao_senha, name='senha'),
-    path('painel', views.painel, name='painel'),
-    path('user-cadastro', views.criar_cadastro, name='user-cadastro'),
-    path('login', views.user_login, name='user-login'),
+    path('cadastro', views.cadastrar_usuario, name='cadastrar_usuario'),
+    path('senha', views.recuperacao_senha, name='recuperacao_senha'),
+    path('painel', views.acesso_painel, name='acesso_painel'),
+    path('usuarios/novo', views.criar_cadastro, name='criar_cadastro'),
+    path('login', views.verificar_login, name='verificar_login'),
     path('historico', views.historico, name='historico'),
 ]

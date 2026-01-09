@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="{% url 'user-cadastro'%}" method="POST">
+        <form action="{% url 'criar_cadastro'%}" method="POST">
             {%csrf_token%}
             <input type="text" name="nome" placeholder="Nome" required maxlength="10">
             <input type="text" name="sobrenome" placeholder="Sobrenome" required maxlength="10">
             <input type="date" name="data" placeholder="Data de nascimento" required>
-            <input type="text" name="cpf" placeholder="CPF" required maxlength="11">
+            <input type="text" name="cpf" placeholder="CPF" required maxlength="11" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
             <input type="text" name="telefone" placeholder="Telefone" required>
-            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="email" name="email" placeholder="E-mail" required autocomplete="on">
             <input type="password" name="senha" placeholder="senha" required  autocomplete="off">
             <button type="submit">Cadastrar</button>
         </form>

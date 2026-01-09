@@ -1,18 +1,18 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.hashers import make_password, check_password
-from .models import user_cadastro
+from .models import UserCadastro
 
 def login(request):
     return render(request, 'home/user/login.html')
 
-def cadastro(request):
+def cadastrar_usuario(request):
     return render(request, 'home/user/cadastro.html')
 
 def recuperacao_senha(request):
     return render(request, 'home/user/rec_senha.html')
 
-def painel(request):
+def acesso_painel(request):
     return render(request, 'home/index.html')
 
 def historico(request):
@@ -28,7 +28,7 @@ def criar_cadastro(request):
         email =request.POST.get("email")
         senha = make_password(request.POST.get("senha"))
         
-        user_cadastro.objects.create(
+        UserCadastro.objects.create(
             nome = nome,
             sobrenome = sobrenome,
             data_nascimento = data_nasc,
@@ -39,28 +39,28 @@ def criar_cadastro(request):
         )
         return redirect('login')
     
-    teste = user_cadastro.objects.all()
+    teste = UserCadastro.objects.all()
     return render(request, "home/user/cadastro.html", {"cadastro": teste}) 
 
-def user_login(request):
+def verificar_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         senha = request.POST.get('senha')
         
         try:
             # Tenta encontrar o usuário pelo e-mail
-            user = user_cadastro.objects.get(email=email)
+            user = UserCadastro.objects.get(email=email)
 
             # Verifica se a senha digitada bate com o hash salvo
             if check_password(senha, user.senha):
                 # Gerenciamento de seções do usuário
                 # request.session['usuario_id'] = user.id
                 # request.session['usuario_nome'] = user.nome
-                return redirect('painel')  # Redireciona para a página inicial
+                return redirect('acesso_painel')  # Redireciona para a página inicial
             else:
                 return render(request, 'home/user/login.html', {'erro': 'Senha incorreta.'})
 
-        except user_cadastro.DoesNotExist:
+        except UserCadastro.DoesNotExist:
             return render(request, 'home/user/login.html', {'erro': 'Usuário não encontrado.'})
 
     return render(request, 'home/index.html')

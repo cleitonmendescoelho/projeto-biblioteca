@@ -1,6 +1,6 @@
 from django.db import models
 
-class user_cadastro(models.Model):
+class UserCadastro(models.Model):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
     sobrenome = models.CharField(max_length=255)
