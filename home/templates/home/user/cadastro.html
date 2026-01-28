@@ -10,13 +10,25 @@
     <div class="container">
         <form action="{% url 'criar_cadastro'%}" method="POST">
             {%csrf_token%}
-            <input type="text" name="nome" placeholder="Nome" required maxlength="10">
-            <input type="text" name="sobrenome" placeholder="Sobrenome" required maxlength="10">
-            <input type="date" name="data" placeholder="Data de nascimento" required>
-            <input type="text" name="cpf" placeholder="CPF" required maxlength="11" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
-            <input type="text" name="telefone" placeholder="Telefone" required>
-            <input type="email" name="email" placeholder="E-mail" required autocomplete="on">
-            <input type="password" name="senha" placeholder="senha" required  autocomplete="off">
+            <input type="text" name="nome" placeholder="Nome" required maxlength="10" value="{{ dados.nome }}"> <!--Inserção do value-->
+            <input type="text" name="sobrenome" placeholder="Sobrenome" required maxlength="10" value="{{ dados.sobrenome }}"><!--Inserção do value-->
+            <input type="date" name="data" placeholder="Data de nascimento" required value="{{ dados.data }}"><!--Inserção do value-->
+            <input type="text" name="cpf" placeholder="CPF" required maxlength="11" value="{{ dados.cpf }}"><!--Inserção do value-->
+            <input type="text" name="telefone" placeholder="Telefone" required value="{{ dados.telefone }}"><!--Inserção do value-->
+            <input type="email" name="email" placeholder="E-mail" required autocomplete="on" value="{{ dados.email }}"><!--Inserção do value-->
+            <input type="password" name="senha" placeholder="senha" required autocomplete="off">
+
+            <!-- Estrutura condicional inserida para renderização das mensagens das regras -->
+             {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" style="color:rgb(0, 204, 255);">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
             <button type="submit">Cadastrar</button>
         </form>
     </div>

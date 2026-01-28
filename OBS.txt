@@ -1,0 +1,111 @@
+* return render(request, 'caminho') - O caminho, inicialmente, sempre deve iniciar apontando para a APP onde esta os arquivos.
+
+
+
+
+
+
+
+
+
+⚠️ Pontos de melhorias da estrutura do código
+
+
+🔴 Reutilização de dados em caso de erro
+
+	value="{{ dados.nome }}"
+
+
+🔴 1. Template não herda um layout base
+
+Boa prática no Django:
+
+Criar um base.html
+
+Usar {% extends %} e {% block %}
+
+📌 Problema atual:
+
+HTML duplicado em várias páginas
+
+Difícil manutenção
+
+📌 O que falta:
+
+{% extends "base.html" %}
+{% block content %}
+    <!-- formulário -->
+{% endblock %}
+
+🔴 2. Campo CPF e Telefone sem máscara
+
+Não é erro funcional, mas:
+
+UX ruim
+
+Usuário pode digitar qualquer coisa
+
+📌 Ideal:
+
+Usar máscara com JavaScript
+
+Ou validar formato visualmente no frontend
+
+🔴 3. View grande demais (excesso de responsabilidade)
+
+A função criar_cadastro:
+
+Faz parsing
+
+Valida tudo
+
+Cria usuário
+
+Retorna mensagens
+
+📌 Boa prática no Django:
+➡️ Usar Forms (forms.py)
+
+Problema atual
+
+Código difícil de manter
+
+Repetição de validações no futuro
+
+🔴 4. Validação manual repetitiva
+
+Exemplo:
+
+if not nome or len(nome) < 3:
+
+
+📌 Django já oferece:
+
+forms.CharField(min_length=3)
+
+EmailField
+
+clean_<campo>()
+
+🔴 5. Falta tratamento para CPF duplicado
+
+Você valida e-mail, mas:
+
+CPF normalmente também deve ser único
+
+📌 Falta:
+
+
+🔴 6. Falta controle de sessão
+
+No login:
+
+# request.session['usuario_id'] = user.id
+
+
+📌 Problema:
+
+Usuário não fica autenticado de fato
+
+Não há proteção de rotas
+

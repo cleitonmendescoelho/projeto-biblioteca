@@ -1,61 +1,415 @@
-REQUISITOS FUNCIONAIS
+📌 REQUISITOS FUNCIONAIS
 
--> Camadas
-* Login
-* Cadastro
-* Recuperação de senha
-* Painel (usuário)
-* Painel (Admin)
+🔹 1.Seções de Páginas
 
--> Interface de usuário (Login)
-    - Email
-    - Senha
-    - Recuperar Senha
-    - Criar Conta
-    - Alternativas de login (3)
-Ao logar o usuário vai direto para a página de user-admin no qual irá poder consultar o status e criar novos registros.
+Login
 
--> INTERFACE DE CADASTRO
+Cadastro
 
-* Campo Nome
-* Campo sobrenome
-* Campo idade
-* Campo CPF
-* Campo telefone
-* Email
-* Campo Senha
+Recuperação de senha
 
--> INTERFACE DE RECUPERAÇÃO DE SENHA
+Painel (usuário)
 
-* Email de verificação
-* 
+Livros
 
--> INTERFACE DE USUÁRIO (Painel)
+Histórico
 
-* O usuário terá um formulário para cadastro de novos livros com os campos:
-    - Nome do livro
-    - Codigo do livro
-    - Categoria
+Relatórios
 
-Quando o usuário criar em reservar livro a aplicação deve registrar a data e a hora em que foi realizado o registro.
-
-* A aplicação vai conter uma consulta de status que irá gerar o status atual (livros que estão em uso) e o histórico
-anteriores de livros que foram imprestados. O histórico irá ter os seguintes registros:
-
-    -Nome do livro
-    -codigo do livro
-    Data do cadastro
-    Hora do cadastro
-    Data da devolução
-    Horários da devolução
-    Status (concluido ou pendente)
-
-* A aplicação deve fornecer as opções de edição e exclusão do cadastro do livro antes de gerar o registro
-* Permitir que o usuario filte por data,ano e mês
-* Permitir que p usuário faça o download do histórico em formato PDF
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* A aplicação deve verificar se os dados de login preenchidos na tela de login existem na tabela cadastro. Caso o cadastro existe o login é efetuado e o usuário encaminhado
-para o painel principal.
+Modal de preenchimento de informações
 
 
+
+🔹 2. Interface de Usuário (seção Login, cadastro e recuperação de senha)
+
+☑ Campos e opções:
+
+Email
+
+Senha
+
+Criar Conta
+
+Recuperar Senha
+
+Alternativas de login: Google, telefone e token
+
+📝 Validação Email/Senha:
+
+* Os campos email e senha não podem está vazios.
+* O campo email deve respeitar o padrão dos emails.
+
+📝 Validação Criar conta:
+
+* Nome: 
+ - O campo não pode está vazio.
+ - O campo não pode ter menos que 5 caracteres.
+ - O campo não pode permitir números.
+
+ * Sobrenome: 
+ - O campo não pode está vazio.
+ - O campo não pode ter menos que 5 caracteres.
+
+ * Data de Nascimento:
+ - Não pode permitir data futura
+ - Não pode está vazia
+ - A data salva no banco de dados deve seguir o formato D/M/A
+
+ * CPF: 
+ - Não pode está vazio
+ - Deve conter 11 digitos
+ - Não pode conter valores alfabéticos
+
+ * Telefone:
+ - Não pode está vazio
+ - deve conter o DDD
+ - deve ter no mínimo 10 caracteres
+
+ * Email:
+ - Não pode está vazio
+ - O campo email deve respeitar o padrão dos emails.
+
+ * Senha:
+ - Não pode está vazio
+ - Deve ter no minimo 8 caracteres
+
+📝 Validação recuperação de senha:
+
+
+
+🔹 3. Interface — Painel de Usuário
+
+🖥 Páginas:
+
+* Exibição dos livros
+* Tela de livros imprestados
+* Tela Histórico
+* Tela Relatórios
+
+💻 Recursos:
+
+* A Tela inicial irá conter um acervo digital de livros
+* A tela inicial deve conter uma barra de pesquisa de livros
+* A tela inicial deve possibilitar a filtragem de tipo de livro
+* A tela inicial deve conter o mecanismo de gerenciamento de dados e logon
+* A tela inicial deve contar os dados estatisticos de imprestimo de livros
+* Cada livro tem a opção do usuário favoritar
+* Quando o usuário clicar em reservar a aplicação deve registrar a data e a hora em que foi realizado o registro.
+
+📊 Consulta de Status e Histórico
+
+A aplicação vai conter uma consulta de status que irá gerar:
+
+O status atual (livros que estão em uso)
+
+O histórico anteriores de livros que foram imprestados
+
+O histórico irá ter os seguintes registros:
+
+Nome do livro
+
+codigo do livro
+
+Data do cadastro
+
+Hora do cadastro
+
+Data da devolução
+
+Horários da devolução
+
+Status (concluido ou pendente)
+
+⚙ Ações disponíveis
+
+A aplicação deve fornecer as opções de edição e exclusão do cadastro do livro antes de gerar o registro
+
+Permitir que o usuario filte por data, ano e mês
+
+Permitir que p usuário faça o download do histórico em formato PDF
+
+🔹 6. Validação de Login
+
+A aplicação deve verificar se os dados de login preenchidos na tela de login existem na tabela cadastro.
+Caso o cadastro existe o login é efetuado e o usuário encaminhado para o painel principal.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+📌 PENDENCIAS DE IMPLEMENTAÇÃO
+
+verifica se o usuário está autenticado
+filtra dados por usuário
+logout
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+📌 MELHORIAS
+
+* login(request)
+
+Pontos pendentes / melhorias
+
+❌ Não trata mensagens de erro via django.contrib.messages
+
+❌ Não impede acesso de usuários já autenticados
+
+❌ Não usa o sistema de autenticação nativo do Django
+
+Boas práticas recomendadas
+
+Usar messages.error() para feedback
+
+Redirecionar usuários já logados
+
+Preferir django.contrib.auth.authenticate
+
+* cadastrar_usuario(request)
+
+Pontos pendentes / melhorias
+
+❌ View redundante com criar_cadastro
+
+❌ Nenhuma lógica de negócio associada
+
+❌ Pode ser fundida com a view de criação
+
+Boas práticas recomendadas
+
+Unificar renderização e criação em uma única view
+
+Utilizar Form ou ModelForm
+
+
+* recuperacao_senha(request)
+
+Pontos pendentes / melhorias
+
+❌ Não implementa fluxo real de recuperação
+
+❌ Não envia e-mail
+
+❌ Não gera token de redefinição
+
+Boas práticas recomendadas
+
+Usar PasswordResetView do Django
+
+Configurar backend de e-mail
+
+Nunca implementar recuperação manualmente
+
+
+* acesso_painel(request)
+
+Pontos pendentes / melhorias
+
+❌ Não verifica se o usuário está autenticado
+
+❌ Permite acesso direto por URL
+
+Boas práticas recomendadas
+
+Usar @login_required
+
+Validar sessão ou autenticação
+
+
+* historico(request)
+
+Pontos pendentes / melhorias
+
+❌ Não filtra dados por usuário
+
+❌ Página acessível sem autenticação
+
+Boas práticas recomendadas
+
+Restringir acesso por usuário logado
+
+Buscar dados relacionados ao usuário autenticado
+
+
+* criar_cadastro(request)
+
+Pontos críticos a corrigir
+
+❌ Não valida campos obrigatórios
+
+❌ Não trata CPF duplicado
+
+❌ Não trata e-mail duplicado
+
+❌ Não valida formato dos dados
+
+❌ Mistura POST e GET na mesma lógica
+
+❌ Expõe todos os usuários no GET (UserCadastro.objects.all())
+
+Boas práticas recomendadas
+
+Usar ModelForm
+
+Validar dados antes de salvar
+
+Remover listagem de usuários dessa view
+
+Tratar exceções de integridade (IntegrityError)
+
+Separar cadastro e listagem
+
+
+* verificar_login(request)
+
+Pontos críticos
+
+❌ Reimplementa sistema de autenticação do Django
+
+❌ Sessão comentada e incompleta
+
+❌ Não usa login() e logout()
+
+❌ Redirecionamento inconsistente
+
+❌ Falta proteção contra brute force
+
+Boas práticas recomendadas
+
+Usar authenticate() e login()
+
+Usar django.contrib.auth.models.User
+
+Centralizar autenticação no sistema nativo
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+📌 Verificação
+
+
+### ❌ Campos obrigatórios não verificados
+
+**Problema**
+
+- Se um campo vier vazio, o registro ainda é criado.
+
+**O que falta validar**
+
+- Campos nulos ou vazios antes do `.create()`.
+
+---
+
+### ❌ Unicidade de dados
+
+**Problema**
+
+- Nenhuma verificação para:
+    - CPF duplicado
+    - E-mail duplicado
+
+**Impacto**
+
+- Usuários duplicados no banco.
+
+---
+
+### ❌ Integridade da senha
+
+**Problema**
+
+- A senha é hasheada, mas:
+    - Pode ser vazia
+    - Pode ser curta
+    - Pode ser igual ao CPF ou e-mail
+    
+
+🔐 RN-06 — Política de senha
+
+Regras
+
+Senha deve conter:
+
+Mínimo de caracteres
+
+Letras e números
+
+Senha não pode:
+
+Ser igual ao CPF
+
+Ser igual ao e-mail
+
+Justificativa
+Segurança básica de credenciais.
+
+---
+
+### ❌ Validação de tipo de dado
+
+**Problema**
+
+- Todos os valores chegam como string.
+- Não há conversão ou validação semântica.
+
+**Exemplos**
+
+- `data_nasc` não validada como `date`
+- CPF e telefone não tratados como números
+
+---
+
+OBS
+
+### ❌ Exposição indevida de dados
+
+**Problema**
+
+```python
+teste = UserCadastro.objects.all()
+
+```
+
+**Risco**
+
+- Retorna todos os usuários sem filtro.
+- Quebra LGPD e segurança.
+
+**O que falta validar**
+
+- Se o usuário pode visualizar esses dados (provavelmente não).
+
+### ❌ Fluxo de autenticação incompleto
+
+**Problemas**
+
+- Não verifica se o usuário está ativo
+- Não valida status da conta
+- Não valida tentativas excessivas
+
+### ❌ Sessão não validada
+
+**Problema**
+
+- Sessão comentada
+- Nenhum controle de acesso persistente
+
+### ❌ Retorno inconsistente
+
+**Problema**
+
+```python
+return render(request,'home/index.html')
+
+```
+
+**Risco**
+
+- Usuário pode acessar página sem login.
+
+## 4. Validações ausentes em views de renderização simples
+
+### `login`, `cadastrar_usuario`, `recuperacao_senha`
+
+**Problema**
+
+- Nenhuma verificação de contexto:
+    - Usuário já autenticado
+    - Sessão ativa
