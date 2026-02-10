@@ -1,13 +1,6 @@
 * return render(request, 'caminho') - O caminho, inicialmente, sempre deve iniciar apontando para a APP onde esta os arquivos.
 
 
-
-
-
-
-
-
-
 ⚠️ Pontos de melhorias da estrutura do código
 
 
