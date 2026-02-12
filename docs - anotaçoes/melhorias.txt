@@ -1,13 +1,4 @@
-* return render(request, 'caminho') - O caminho, inicialmente, sempre deve iniciar apontando para a APP onde esta os arquivos.
-
-
 ⚠️ Pontos de melhorias da estrutura do código
-
-
-🔴 Reutilização de dados em caso de erro
-
-	value="{{ dados.nome }}"
-
 
 🔴 1. Template não herda um layout base
 
@@ -30,19 +21,13 @@ Difícil manutenção
     <!-- formulário -->
 {% endblock %}
 
-🔴 2. Campo CPF e Telefone sem máscara
 
-Não é erro funcional, mas:
+🔴 2. Falta tratamento para CPF duplicado
 
-UX ruim
+Você valida e-mail, mas:
 
-Usuário pode digitar qualquer coisa
+CPF normalmente também deve ser único
 
-📌 Ideal:
-
-Usar máscara com JavaScript
-
-Ou validar formato visualmente no frontend
 
 🔴 3. View grande demais (excesso de responsabilidade)
 
@@ -80,14 +65,19 @@ EmailField
 
 clean_<campo>()
 
-🔴 5. Falta tratamento para CPF duplicado
+🔴 5. Campo CPF e Telefone sem máscara
 
-Você valida e-mail, mas:
+Não é erro funcional, mas:
 
-CPF normalmente também deve ser único
+UX ruim
 
-📌 Falta:
+Usuário pode digitar qualquer coisa
 
+📌 Ideal:
+
+Usar máscara com JavaScript
+
+Ou validar formato visualmente no frontend
 
 🔴 6. Falta controle de sessão
 

@@ -1,253 +1,179 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'home/css/modulos/historico.css'%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% extends 'home/index.html'%}
 
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <div>
-                    <h1 class="logo">
-                        <i class="fas fa-book-open icon-mr"></i>Biblioteca Digital
-                    </h1>
-                    <p class="subtitle">Sistema de Gestão de Acervo</p>
-                </div>
-                <div class="header-actions">
-                    <div class="search-container">
-                        <input type="text" placeholder="Buscar livro..." class="search-input">
-                        <i class="fas fa-search search-icon"></i>
-                    </div>
-                    <div class="user-avatar">
-                        <i class="fas fa-user user-icon"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Main Content -->
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="sidebar-card">
-                    <h2 class="sidebar-title">Menu</h2>
-                    <ul class="menu-list">
-                        <li>
-                            <a href="{% url 'acesso_painel'%}" class="menu-item">
-                                <i class="fas fa-list menu-icon"></i>
-                                <span>Livros</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/home/templates/home/modulos/historico.html" class="menu-item">
-                                <i class="fas fa-history icon-mr"></i>
-                                <span>Histórico</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu-item">
-                                <i class="fas fa-chart-bar menu-icon"></i>
-                                <span>Relatórios</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Quick Stats -->
-                <div class="stats-card">
-                    <h2 class="sidebar-title">Estatísticas</h2>
-                    <div class="stats-list">
-                        <div class="stat-item">
-                            <p class="stat-label">Livros cadastrados</p>
-                            <p class="stat-value">1,248</p>
-                        </div>
-                        <div class="stat-item">
-                            <p class="stat-label">Empréstimos ativos</p>
-                            <p class="stat-value">87</p>
-                        </div>
-                        <div class="stat-item">
-                            <p class="stat-label">Atrasos</p>
-                            <p class="stat-value">12</p>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <div id="history-section" class="form-section">
-                    <div class="history-card">
-                        <div class="history-header">
-                            <h2 class="form-title">Histórico de Empréstimos</h2>
-                            <div class="history-filters">
-                                <div class="filter-group">
-                                    <select class="filter-select">
-                                        <option>Filtrar por status</option>
-                                        <option>Ativos</option>
-                                        <option>Concluídos</option>
-                                        <option>Atrasados</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down select-icon"></i>
-                                </div>
-                                <div class="filter-group">
-                                    <input type="text" placeholder="Buscar livro..." class="filter-input">
-                                    <i class="fas fa-search filter-icon"></i>
-                                </div>
+{% block teste %}
+<main class="main-content">
+    <div id="history-section" class="form-section">
+                <div class="history-card">
+                    <div class="history-header">
+                        <h2 class="form-title">Histórico de Empréstimos</h2>
+                        <div class="history-filters">
+                            <div class="filter-group">
+                                <select class="filter-select">
+                                    <option>Filtrar por status</option>
+                                    <option>Ativos</option>
+                                    <option>Concluídos</option>
+                                    <option>Atrasados</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-icon"></i>
+                            </div>
+                            <div class="filter-group">
+                                <input type="text" placeholder="Buscar livro..." class="filter-input">
+                                <i class="fas fa-search filter-icon"></i>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="table-container">
-                            <table class="history-table">
-                                <thead class="table-header">
-                                    <tr>
-                                        <th scope="col" class="table-heading">Livro</th>
-                                        <th scope="col" class="table-heading">Usuário</th>
-                                        <th scope="col" class="table-heading">Data Empréstimo</th>
-                                        <th scope="col" class="table-heading">Data Devolução</th>
-                                        <th scope="col" class="table-heading">Status</th>
-                                        <th scope="col" class="table-heading">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-body">
-                                    <!-- History Item 1 -->
-                                    <tr class="history-item">
-                                        <td class="table-cell">
-                                            <div class="book-info">
-                                                <div class="book-icon">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                                <div class="book-details-cell">
-                                                    <div class="book-name">O Nome do Vento</div>
-                                                    <div class="book-author-cell">Patrick Rothfuss</div>
-                                                </div>
+                    <div class="table-container">
+                        <table class="history-table">
+                            <thead class="table-header">
+                                <tr>
+                                    <th scope="col" class="table-heading">Livro</th>
+                                    <th scope="col" class="table-heading">Usuário</th>
+                                    <th scope="col" class="table-heading">Data Empréstimo</th>
+                                    <th scope="col" class="table-heading">Data Devolução</th>
+                                    <th scope="col" class="table-heading">Status</th>
+                                    <th scope="col" class="table-heading">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <!-- History Item 1 -->
+                                <tr class="history-item">
+                                    <td class="table-cell">
+                                        <div class="book-info">
+                                            <div class="book-icon">
+                                                <i class="fas fa-book"></i>
                                             </div>
-                                        </td>
-                                        <td class="table-cell">
-                                            <div class="user-name">Maria Silva</div>
-                                            <div class="user-id">RA: 20230001</div>
-                                        </td>
-                                        <td class="table-cell">
-                                            15/05/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            30/05/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            <span class="status-tag returned">
-                                                Devolvido
-                                            </span>
-                                        </td>
-                                        <td class="table-cell actions-cell">
-                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                            <button class="action-btn"><i class="fas fa-print"></i></button>
-                                        </td>
-                                    </tr>
+                                            <div class="book-details-cell">
+                                                <div class="book-name">O Nome do Vento</div>
+                                                <div class="book-author-cell">Patrick Rothfuss</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="table-cell">
+                                        <div class="user-name">Maria Silva</div>
+                                        <div class="user-id">RA: 20230001</div>
+                                    </td>
+                                    <td class="table-cell">
+                                        15/05/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        30/05/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        <span class="status-tag returned">
+                                            Devolvido
+                                        </span>
+                                    </td>
+                                    <td class="table-cell actions-cell">
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
 
-                                    <!-- History Item 2 -->
-                                    <tr class="history-item">
-                                        <td class="table-cell">
-                                            <div class="book-info">
-                                                <div class="book-icon">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                                <div class="book-details-cell">
-                                                    <div class="book-name">Sapiens</div>
-                                                    <div class="book-author-cell">Yuval Noah Harari</div>
-                                                </div>
+                                <!-- History Item 2 -->
+                                <tr class="history-item">
+                                    <td class="table-cell">
+                                        <div class="book-info">
+                                            <div class="book-icon">
+                                                <i class="fas fa-book"></i>
                                             </div>
-                                        </td>
-                                        <td class="table-cell">
-                                            <div class="user-name">João Oliveira</div>
-                                            <div class="user-id">RA: 20230045</div>
-                                        </td>
-                                        <td class="table-cell">
-                                            10/06/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            25/06/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            <span class="status-tag borrowed">
-                                                Emprestado
-                                            </span>
-                                        </td>
-                                        <td class="table-cell actions-cell">
-                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                            <button class="action-btn"><i class="fas fa-print"></i></button>
-                                        </td>
-                                    </tr>
+                                            <div class="book-details-cell">
+                                                <div class="book-name">Sapiens</div>
+                                                <div class="book-author-cell">Yuval Noah Harari</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="table-cell">
+                                        <div class="user-name">João Oliveira</div>
+                                        <div class="user-id">RA: 20230045</div>
+                                    </td>
+                                    <td class="table-cell">
+                                        10/06/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        25/06/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        <span class="status-tag borrowed">
+                                            Emprestado
+                                        </span>
+                                    </td>
+                                    <td class="table-cell actions-cell">
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
 
-                                    <!-- History Item 3 -->
-                                    <tr class="history-item">
-                                        <td class="table-cell">
-                                            <div class="book-info">
-                                                <div class="book-icon">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                                <div class="book-details-cell">
-                                                    <div class="book-name">1984</div>
-                                                    <div class="book-author-cell">George Orwell</div>
-                                                </div>
+                                <!-- History Item 3 -->
+                                <tr class="history-item">
+                                    <td class="table-cell">
+                                        <div class="book-info">
+                                            <div class="book-icon">
+                                                <i class="fas fa-book"></i>
                                             </div>
-                                        </td>
-                                        <td class="table-cell">
-                                            <div class="user-name">Ana Costa</div>
-                                            <div class="user-id">RA: 20230078</div>
-                                        </td>
-                                        <td class="table-cell">
-                                            22/05/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            05/06/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            <span class="status-tag overdue">
-                                                Atrasado
-                                            </span>
-                                        </td>
-                                        <td class="table-cell actions-cell">
-                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                            <button class="action-btn"><i class="fas fa-print"></i></button>
-                                        </td>
-                                    </tr>
+                                            <div class="book-details-cell">
+                                                <div class="book-name">1984</div>
+                                                <div class="book-author-cell">George Orwell</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="table-cell">
+                                        <div class="user-name">Ana Costa</div>
+                                        <div class="user-id">RA: 20230078</div>
+                                    </td>
+                                    <td class="table-cell">
+                                        22/05/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        05/06/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        <span class="status-tag overdue">
+                                            Atrasado
+                                        </span>
+                                    </td>
+                                    <td class="table-cell actions-cell">
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
 
-                                    <!-- History Item 4 -->
-                                    <tr class="history-item">
-                                        <td class="table-cell">
-                                            <div class="book-info">
-                                                <div class="book-icon">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                                <div class="book-details-cell">
-                                                    <div class="book-name">O Hobbit</div>
-                                                    <div class="book-author-cell">J.R.R. Tolkien</div>
-                                                </div>
+                                <!-- History Item 4 -->
+                                <tr class="history-item">
+                                    <td class="table-cell">
+                                        <div class="book-info">
+                                            <div class="book-icon">
+                                                <i class="fas fa-book"></i>
                                             </div>
-                                        </td>
-                                        <td class="table-cell">
-                                            <div class="user-name">Carlos Mendes</div>
-                                            <div class="user-id">RA: 20230112</div>
-                                        </td>
-                                        <td class="table-cell">
-                                            03/06/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            18/06/2023
-                                        </td>
-                                        <td class="table-cell">
-                                            <span class="status-tag returned">
-                                                Devolvido
-                                            </span>
-                                        </td>
-                                        <td class="table-cell actions-cell">
-                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                            <button class="action-btn"><i class="fas fa-print"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-</body>
-</html>
+                                            <div class="book-details-cell">
+                                                <div class="book-name">O Hobbit</div>
+                                                <div class="book-author-cell">J.R.R. Tolkien</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="table-cell">
+                                        <div class="user-name">Carlos Mendes</div>
+                                        <div class="user-id">RA: 20230112</div>
+                                    </td>
+                                    <td class="table-cell">
+                                        03/06/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        18/06/2023
+                                    </td>
+                                    <td class="table-cell">
+                                        <span class="status-tag returned">
+                                            Devolvido
+                                        </span>
+                                    </td>
+                                    <td class="table-cell actions-cell">
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+    </div>
+</main>
+{% endblock %}

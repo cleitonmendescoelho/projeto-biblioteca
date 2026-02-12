@@ -1,2 +1,0 @@
-1. Utilização de de layout base propriedades ({% extends %} e {% block %}).
-2. Implementação dos tratamentos de exceções

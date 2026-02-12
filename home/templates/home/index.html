@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Digital</title>
     <link rel="stylesheet" href="{%static 'home/css/modulos/index.css'%}">
-    <!-- <link rel="stylesheet" href="/home/static/home/css/index.css"> -->
+    <link rel="stylesheet" href="{%static 'home/css/modulos/historico.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -30,15 +30,22 @@
                 </div>
             </div>
         </header>
+
         <div class="main-layout">
             <aside class="sidebar">
                 <div class="sidebar-card">
                     <h2 class="sidebar-title">Menu</h2>
                     <ul class="menu-list">
                         <li>
-                            <a href="{% url 'acesso_painel'}" class="menu-item">
+                            <a href="{% url 'acesso_painel'%}" class="menu-item">
                                 <i class="fas fa-list menu-icon"></i>
                                 <span>Livros</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-item">
+                                 <ion-icon name="library-outline" style="font-size: 22px;"></ion-icon>
+                                <span>Minha Biblioteca</span>
                             </a>
                         </li>
                         <li>
@@ -75,7 +82,8 @@
                     </div>
                 </div>
             </aside>
-
+            
+            {% block teste %}
             <!-- Catalogo -->
             <main class="main-content">
                 <section class="books-section">
@@ -231,11 +239,13 @@
                     </div>
                 </section>
         </div>
+        </main>
     </div>
-    </main>
-    </div>
-    </div>
+    {% endblock %}
 
+    <!-- Icons-Framework -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <!-- JavaScript -->
     <script>
