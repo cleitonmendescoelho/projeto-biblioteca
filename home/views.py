@@ -49,6 +49,9 @@ def criar_cadastro(request):
 
         if not cpf or len(cpf) != 11 or not cpf.isdigit():
             erros.append("CPF inválido. Use apenas números (11 dígitos).")
+        else:
+            if UserCadastro.objects.filter(cpf=cpf).exists():
+                erros.append("Este CPF já está cadastrado.")
 
         if not telefone or len(telefone) < 10:
             erros.append("Telefone inválido.")
