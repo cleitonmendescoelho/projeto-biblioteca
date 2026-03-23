@@ -1,4 +1,7 @@
-⚠️ Pontos de melhorias da estrutura do código
+⚠️ MANTER PADRÕES E BOAS PRÁTICAS
+
+
+⚠️ Pontos de Melhorias na Arquitetura do Código
 
 🔴 1. Template não herda um layout base
 
@@ -92,3 +95,9 @@ Usuário não fica autenticado de fato
 
 Não há proteção de rotas
 
+-------------------------------------------------------------------------------------------------------------
+-> Proximo Nível (recomendação)
+
+* Criar validação real de CPF (dígitos verificadores)
+* Usar clean() para validação cruzada
+* Implementar autenticação com AbstractUser ao invés de model própria

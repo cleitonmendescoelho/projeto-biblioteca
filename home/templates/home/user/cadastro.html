@@ -2,35 +2,39 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'home/css/inicial/cadastro.css'%}">
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="{%static 'home/css/inicial/cadastro.css'%}">
 </head>
 <body>
-    <div class="container">
-        <form action="{% url 'criar_cadastro'%}" method="POST">
-            {%csrf_token%}
-            <input type="text" name="nome" placeholder="Nome" required maxlength="10" value="{{ dados.nome }}"> <!--Inserção do value-->
-            <input type="text" name="sobrenome" placeholder="Sobrenome" required maxlength="10" value="{{ dados.sobrenome }}"><!--Inserção do value-->
-            <input type="date" name="data" placeholder="Data de nascimento" required value="{{ dados.data }}"><!--Inserção do value-->
-            <input type="text" name="cpf" placeholder="CPF" required maxlength="11" value="{{ dados.cpf }}"><!--Inserção do value-->
-            <input type="text" name="telefone" placeholder="Telefone" required value="{{ dados.telefone }}"><!--Inserção do value-->
-            <input type="email" name="email" placeholder="E-mail" required autocomplete="on" value="{{ dados.email }}"><!--Inserção do value-->
-            <input type="password" name="senha" placeholder="senha" required autocomplete="off">
+       <div class="container">
+              <form action="{% url 'criar_cadastro' %}" method="POST">
+                     {% csrf_token %}
 
-            <!-- Estrutura condicional inserida para renderização das mensagens das regras -->
-             {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}" style="color:rgb(0, 204, 255);">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        
-            <button type="submit">Cadastrar</button>
-        </form>
-    </div>
+                     <input type="text" name="nome" placeholder="Nome" value="{{ form.nome.value|default:'' }}">
+                     {{ form.nome.errors }}
+
+                     <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{ form.sobrenome.value|default:'' }}">
+                     {{ form.sobrenome.errors }}
+
+                     <input type="date" name="data_nascimento" value="{{ form.data_nascimento.value|default:'' }}">
+                     {{ form.data_nascimento.errors }}
+
+                     <input type="text" name="cpf" placeholder="CPF" value="{{ form.cpf.value|default:'' }}">
+                     {{ form.cpf.errors }}
+
+                     <input type="text" name="telefone" placeholder="Telefone" value="{{ form.telefone.value|default:'' }}">
+                     {{ form.telefone.errors }}
+
+                     <input type="email" name="email" placeholder="E-mail" value="{{ form.email.value|default:'' }}">
+                     {{ form.email.errors }}
+
+                     <input type="password" name="senha" placeholder="Senha">
+                     {{ form.senha.errors }}
+
+                     <button type="submit">Cadastrar</button>
+              </form>
+       </div>
 </body>
+
 </html>

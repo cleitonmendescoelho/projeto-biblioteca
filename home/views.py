@@ -1,4 +1,5 @@
 from .models import UserCadastro
+from .forms import UserCadastroForm
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages # Biblioteca para mensagens de erros de validação
@@ -19,78 +20,33 @@ def recuperacao_senha(request):
 def acesso_painel(request):
     return render(request, 'home/index.html')
 
+def biblioteca_pessoal(request):
+    return render(request, 'home/sections/minha_biblioteca.html')
+
 def historico(request):
     return render(request, 'home/sections/historico.html')
 
+def relatorios(request):
+    return render(request, 'home/sections/relatorios.html')
+
 def criar_cadastro(request):
+
     if request.method == "POST":
-        nome = request.POST.get("nome", "").strip()
-        sobrenome = request.POST.get("sobrenome", "").strip()
-        data_nasc = request.POST.get("data")
-        cpf = request.POST.get("cpf", "").strip()
-        telefone = request.POST.get("telefone", "").strip()
-        email = request.POST.get("email", "").strip()
-        senha_raw = request.POST.get("senha", "")
+        form = UserCadastroForm(request.POST)
 
-        erros = []
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Cadastro realizado com sucesso!")
+            return redirect("cadastrar_usuario")
 
-        # ---------- Validações ----------
-        if not nome or len(nome) < 3:
-            erros.append("O nome é obrigatório e deve ter no mínimo 3 caracteres.")
+    else:
+        form = UserCadastroForm()
 
-        if not sobrenome:
-            erros.append("O sobrenome é obrigatório.")
-
-        if not data_nasc:
-            erros.append("A data de nascimento é obrigatória.")
-        else:
-            if date.fromisoformat(data_nasc) > date.today():
-                erros.append("A data de nascimento não pode ser no futuro.")
-
-        if not cpf or len(cpf) != 11 or not cpf.isdigit():
-            erros.append("CPF inválido. Use apenas números (11 dígitos).")
-        else:
-            if UserCadastro.objects.filter(cpf=cpf).exists():
-                erros.append("Este CPF já está cadastrado.")
-
-        if not telefone or len(telefone) < 10:
-            erros.append("Telefone inválido.")
-
-        try:
-            validate_email(email)
-        except ValidationError:
-            erros.append("E-mail inválido.")
-
-        if UserCadastro.objects.filter(email=email).exists():
-            erros.append("Este e-mail já está cadastrado.")
-
-        if len(senha_raw) < 8:
-            erros.append("A senha deve ter no mínimo 8 caracteres.")
-
-        # ---------- Se houver erro - Envio para o template ----------
-        if erros:
-            for erro in erros:
-                messages.error(request, erro)
-
-            return render(request, "home/user/cadastro.html", {
-                "dados": request.POST
-            })
-
-        # ---------- Criação segura ----------
-        UserCadastro.objects.create(
-            nome=nome,
-            sobrenome=sobrenome,
-            data_nascimento=data_nasc,
-            cpf=cpf,
-            telefone=telefone,
-            email=email,
-            senha=make_password(senha_raw)
-        )
-
-        messages.success(request, "Cadastro realizado com sucesso!")
-        return redirect("cadastrar_usuario")
-
-    return render(request, "home/user/cadastro.html") 
+    return render(
+        request,
+        "home/user/cadastro.html",
+        {"form": form}
+    )
 
 def verificar_login(request):
     if request.method == 'POST':
