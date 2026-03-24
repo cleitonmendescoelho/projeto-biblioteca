@@ -1,3 +1,23 @@
+⚠️ Melhoria - Barra de pesquisa
+
+debounce com JS (não submeter toda hora)
+busca dinâmica (AJAX / fetch)
+paginação
+filtro por categoria
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ⚠️ MANTER PADRÕES E BOAS PRÁTICAS
 
 

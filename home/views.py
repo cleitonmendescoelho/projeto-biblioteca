@@ -18,13 +18,16 @@ def recuperacao_senha(request):
     return render(request, 'home/user/rec_senha.html')
 
 def acesso_painel(request):
-    return render(request, 'home/index.html')
+    return render(request, 'home/paginas/index.html')
 
 def biblioteca_pessoal(request):
     return render(request, 'home/sections/minha_biblioteca.html')
 
 def historico(request):
-    return render(request, 'home/sections/historico.html')
+    return render(request, 'home/paginas/historico.html')
+
+def biblioteca_pessoal(request):
+    return render(request, 'home/sections/minha_biblioteca.html')
 
 def relatorios(request):
     return render(request, 'home/sections/relatorios.html')

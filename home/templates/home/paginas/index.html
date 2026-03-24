@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Digital</title>
-    <link rel="stylesheet" href="{%static 'home/css/modulos/index.css'%}">
-    <link rel="stylesheet" href="{%static 'home/css/modulos/historico.css'%}">
+    <link rel="stylesheet" href="{%static 'home/css/paginas/index.css'%}">
+    <link rel="stylesheet" href="{%static 'home/css/paginas/historico.css'%}">
+    <link rel="stylesheet" href="{%static 'home/css/paginas/relatorios.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -43,7 +44,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="menu-item">
+                            <a href="{%url 'biblioteca_pessoal'%}" class="menu-item">
                                  <ion-icon name="library-outline" style="font-size: 22px;"></ion-icon>
                                 <span>Minha Biblioteca</span>
                             </a>
@@ -55,7 +56,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="menu-item">
+                            <a href="{% url 'relatorios'%}" class="menu-item">
                                 <i class="fas fa-chart-bar menu-icon"></i>
                                 <span>Relatórios</span>
                             </a>
@@ -83,7 +84,7 @@
                 </div>
             </aside>
             
-            {% block teste %}
+            {% block content %}
             <!-- Catalogo -->
             <main class="main-content">
                 <section class="books-section">
