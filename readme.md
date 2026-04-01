@@ -1,9 +1,8 @@
 # Sistema de Gestão de Biblioteca 
+O projeto é uma API completa que visa disponibilizar aos usuários livros para leitura de forma gratuita. O projeto permite que usuários se cadastrem e acessem o peojeto.
 
-### Sobre
-O projeto é uma API completa de um sistema de gestão de biblioteca digital com sistema de autenticação e controle de seção de usuário que visa gerenciar o controle de imprestimo (acesso) de livros digitais. Onde cada livro é registrado no perfil do usuário
 
-### Camadas do projeto
+### Seções da Aplicação
 
 - Tela de login
 - Tela de cadastro
@@ -14,5 +13,5 @@ O projeto é uma API completa de um sistema de gestão de biblioteca digital com
 - Livros (Seção que contém os livros)
 - Dados de estatistica
 
-### Tela de Login e Cadastro
+### Funcionamento
 
