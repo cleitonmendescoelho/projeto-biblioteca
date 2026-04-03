@@ -1,0 +1,28 @@
+** Seção Livros **
+
+* O banco de dados armazena todos os livros exibidos na tabela
+* Melhor forma de integrar o layout dos livros (elementos de exibição) com as informações dele
+* Melhor forma de gerenciar as informações gerais de cada livro (lista de livros) da informações específicas de cada um ao usuário clicar em um livro.
+* Deve ser aberto um modal ao clicar no livro que vai exibir as informações gerais do livro
+
+** Seção minha biblioteca **
+   
+* Verificar o processamento do encaminhamento (exibição) dos livros selecionados na seção.
+* Verificar os tipos de informação a serem armazenadas na tabela referente a seção
+* Verificar como funciona o processamento da informação dos livros removidos da seção em relação ao banco de dados (também devem ser removidos)
+
+
+** Histórico **
+
+* Ferramenta a ser utilizada para retorno de resultado de pesquisa e filtros
+* Definir as informações a serem exibidas na seção
+* Definir as ações da seção que o usuário pode realizar
+
+** Relatórios **
+
+* Definir as informações que vão ser processadas pelo gráfico
+
+OBS:
+
+* Funcionamento real com arquivos referente a cada livro. Ou seja, como funcionaria o processo de armazenamento e exibição do documento para o usuário.
+
