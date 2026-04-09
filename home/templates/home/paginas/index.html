@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="{%static 'home/css/paginas/relatorios.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -45,7 +47,7 @@
                         </li>
                         <li>
                             <a href="{%url 'biblioteca_pessoal'%}" class="menu-item">
-                                 <ion-icon name="library-outline" style="font-size: 22px;"></ion-icon>
+                                <ion-icon name="library-outline" style="font-size: 22px;"></ion-icon>
                                 <span>Minha Biblioteca</span>
                             </a>
                         </li>
@@ -83,18 +85,19 @@
                     </div>
                 </div>
             </aside>
-            
+
             {% block content %}
             <!-- Catalogo -->
             <main class="main-content">
                 <section class="books-section">
                     <div class="books-grid">
+                        {% for dado in dados %}
                         <div class="book-card">
-                            <img src="http://static.photos/education/320x240/101" alt="O Nome do Vento">
+                            <img src="{% static dado.livro_imagem %}" alt="{{ dado.nome }}">
                             <div class="book-info">
-                                <h3>O Nome do Vento</h3>
-                                <p class="author">Patrick Rothfuss</p>
-                                <p class="description">A crônica do assassino de reis: primeiro dia</p>
+                                <h3>{{dado.nome}}</h3>
+                                <p class="author">Autor: {{dado.autor}}</p>
+                                <p class="description">Gênero: {{dado.genero}}</p>
                             </div>
                             <div class="book-actions">
                                 <button class="borrow-btn">
@@ -105,126 +108,7 @@
                                 </button>
                             </div>
                         </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/minimal/320x240/102" alt="1984">
-                            <div class="book-info">
-                                <h3>1984</h3>
-                                <p class="author">George Orwell</p>
-                                <p class="description">Um clássico da ficção distópica</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/nature/320x240/103" alt="O Hobbit">
-                            <div class="book-info">
-                                <h3>O Hobbit</h3>
-                                <p class="author">J.R.R. Tolkien</p>
-                                <p class="description">Uma jornada inesperada</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/vintage/320x240/104" alt="Orgulho e Preconceito">
-                            <div class="book-info">
-                                <h3>Orgulho e Preconceito</h3>
-                                <p class="author">Jane Austen</p>
-                                <p class="description">Um romance atemporal</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/technology/320x240/105"
-                                alt="O Guia do Mochileiro das Galáxias">
-                            <div class="book-info">
-                                <h3>O Guia do Mochileiro das Galáxias</h3>
-                                <p class="author">Douglas Adams</p>
-                                <p class="description">Não entre em pânico!</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/abstract/320x240/106" alt="Cem Anos de Solidão">
-                            <div class="book-info">
-                                <h3>Cem Anos de Solidão</h3>
-                                <p class="author">Gabriel García Márquez</p>
-                                <p class="description">Realismo mágico em sua melhor forma</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/white/320x240/107" alt="As Crônicas de Nárnia">
-                            <div class="book-info">
-                                <h3>As Crônicas de Nárnia</h3>
-                                <p class="author">C.S. Lewis</p>
-                                <p class="description">A jornada para o guarda-roupa</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="book-card">
-                            <img src="http://static.photos/yellow/320x240/108" alt="O Pequeno Príncipe">
-                            <div class="book-info">
-                                <h3>O Pequeno Príncipe</h3>
-                                <p class="author">Antoine de Saint-Exupéry</p>
-                                <p class="description">O essencial é invisível aos olhos</p>
-                            </div>
-                            <div class="book-actions">
-                                <button class="borrow-btn">
-                                    <i class="fas fa-book-open"></i> Emprestar
-                                </button>
-                                <button class="favorite-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
+                        {%endfor%}
                     </div>
 
                     <!-- Paginação -->

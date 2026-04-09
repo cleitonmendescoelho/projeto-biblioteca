@@ -1,4 +1,5 @@
 from .models import UserCadastro
+from .models import Livro
 from .forms import UserCadastroForm
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -18,7 +19,8 @@ def recuperacao_senha(request):
     return render(request, 'home/user/rec_senha.html')
 
 def acesso_painel(request):
-    return render(request, 'home/paginas/index.html')
+    dados = Livro.objects.all().order_by('-ordem')
+    return render(request, 'home/paginas/index.html', {'dados':dados})
 
 def biblioteca_pessoal(request):
     return render(request, 'home/sections/minha_biblioteca.html')
