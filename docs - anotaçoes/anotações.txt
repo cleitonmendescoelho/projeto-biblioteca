@@ -1,3 +1,16 @@
+** Seção de Usuários **
+
+
+
+
+
+
+
+
+
+
+
+
 ** Seção Livros **
 
 * O banco de dados armazena todos os livros exibidos na tabela
@@ -10,6 +23,19 @@
 * Verificar o processamento do encaminhamento (exibição) dos livros selecionados na seção.
 * Verificar os tipos de informação a serem armazenadas na tabela referente a seção
 * Verificar como funciona o processamento da informação dos livros removidos da seção em relação ao banco de dados (também devem ser removidos)
+
+⚙ IMPLEMENTAÇÂO
+-> Implementar o controle de seção
+-> Modelar a tabela
+-> Criar a tabela da seção
+-> Implementar a lógica de negócio da seção (Django+ORM)
+-> Renderizar os dados no template
+
+📌 MELHORIA 
+
+usar AJAX / fetch
+adicionar livro sem reload
+atualizar biblioteca dinamicamente
 
 
 ** Histórico **

@@ -1,0 +1,25 @@
+{%extends 'home/paginas/index.html'%}
+
+{% load static%}
+
+{% block content%}
+<div class="books-grid-biblioteca">
+    {% for dado in dados %}
+    <div class="book-card-biblioteca">
+        <img src="{% static dado.imagem_capa %}" alt="{{ dado.nome }}">
+
+        <div class="book-info-biblioteca">
+            <h3>{{ dado.nome }}</h3>
+            <p>Progresso: 30%</p>
+
+
+            <div class="book-actions-biblioteca">
+                <button class="borrow-btn">Continuar</button>
+                <button class="btn-delete">Remover</button>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}

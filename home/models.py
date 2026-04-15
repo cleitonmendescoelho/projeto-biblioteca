@@ -22,3 +22,10 @@ class Livro(models.Model):
     livro_imagem = models.CharField(max_length=255, null=True, blank=True)
     ordem = models.IntegerField(default=0)
     
+class MinhaBiblioteca(models.Model):
+    id_livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=120)
+    imagem_capa = models.CharField(max_length=255)
+    
+    
+    
