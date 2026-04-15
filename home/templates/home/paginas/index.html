@@ -100,7 +100,15 @@
                                 <p class="description">Gênero: {{dado.genero}}</p>
                             </div>
                             <div class="book-actions">
-                                <button class="borrow-btn">
+                                <button class="borrow-btn" onclick="abrirModal(
+                                    '{{ dado.id }}',
+                                    '{{ dado.nome|escapejs }}',
+                                    '{{ dado.autor|escapejs }}',
+                                    '{{ dado.genero|escapejs }}',
+                                    '{{ dado.descricao|escapejs }}',
+                                    '{{ dado.editora|escapejs }}',
+                                    '{{ dado.pagina_livro }}'
+                                )">
                                     <i class="fas fa-book-open"></i> Emprestar
                                 </button>
                                 <button class="favorite-btn">
@@ -109,6 +117,25 @@
                             </div>
                         </div>
                         {%endfor%}
+                    </div>
+
+                    <!-- Modal-Info -->
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="fecharModal()">&times;</span>
+
+                            <h2 id="modal-nome"></h2>
+
+                            <div class="info">
+                                <p><strong>Autor:</strong> <span id="modal-autor"></span></p>
+                                <p><strong>Gênero:</strong> <span id="modal-genero"></span></p>
+                                <p><strong>Páginas:</strong> <span id="modal-paginas"></span></p>
+                                <p><strong>Editora:</strong> <span id="modal-editora"></span></p>
+                                <p><strong>Descrição:</strong> <span id="modal-descricao"></span></p>
+                            </div>
+
+                            <button onclick="lerLivro()" class="ler">Ler</button>
+                        </div>
                     </div>
 
                     <!-- Paginação -->
@@ -132,53 +159,34 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - Functions -->
     <script>
-        // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            const registerTab = document.getElementById('register-tab');
-            const historyTab = document.getElementById('history-tab');
-            const registerSection = document.getElementById('register-section');
-            const historySection = document.getElementById('history-section');
+        // JS - Modal
+        let livroIdSelecionado = null;
 
-            // Show register section by default
-            registerSection.classList.remove('hidden');
-            historySection.classList.add('hidden');
+        function abrirModal(id, nome, autor, genero, descricao, editora, paginas) {
+            livroIdSelecionado = id;
 
-            // Tab click handlers
-            registerTab.addEventListener('click', function (e) {
-                e.preventDefault();
-                registerSection.classList.remove('hidden');
-                historySection.classList.add('hidden');
-                registerTab.classList.add('active-tab');
-                historyTab.classList.remove('active-tab');
-            });
+            document.getElementById("modal-nome").innerText = nome;
+            document.getElementById("modal-autor").innerText = autor;
+            document.getElementById("modal-genero").innerText = genero;
+            document.getElementById("modal-descricao").innerText = descricao;
+            document.getElementById("modal-editora").innerText = editora;
+            document.getElementById("modal-paginas").innerText = paginas;
 
-            historyTab.addEventListener('click', function (e) {
-                e.preventDefault();
-                registerSection.classList.add('hidden');
-                historySection.classList.remove('hidden');
-                registerTab.classList.remove('active-tab');
-                historyTab.classList.add('active-tab');
-            });
+            document.getElementById("modal").style.display = "block";
+        }
 
-            // Form submission handler
-            const bookForm = document.getElementById('book-form');
-            bookForm.addEventListener('submit', function (e) {
-                e.preventDefault();
+        function lerLivro() {
+            if (livroIdSelecionado) {
+                window.location.href = `/adicionar-biblioteca/${livroIdSelecionado}/`;
+            }
+        }
 
-                // Get form values
-                const title = document.getElementById('title').value;
-                const author = document.getElementById('author').value;
-                const isbn = document.getElementById('isbn').value;
-
-                // In a real app, you would send this data to a server
-                alert(`Livro "${title}" por ${author} (ISBN: ${isbn}) cadastrado com sucesso!`);
-
-                // Reset form
-                bookForm.reset();
-            });
-        });
+        function fecharModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+        
     </script>
 </body>
 

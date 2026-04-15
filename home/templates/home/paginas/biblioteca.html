@@ -1,0 +1,25 @@
+{%extends 'home/paginas/index.html'%}
+{% load static%}
+
+
+{% block content%}
+
+<div class="books-grid">
+    {% for dado in dados %}
+    <div class="book-card">
+        <img src="{% static dado.imagem_capa %}" alt="{{ dado.nome }}">
+
+        <div class="book-info">
+            <h3>{{ dado.nome }}</h3>
+            <p>Autor: {{ dado.id_livro.autor }}</p>
+            <p>Gênero: {{ dado.id_livro.genero }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{%endblock%}
+
+
+
