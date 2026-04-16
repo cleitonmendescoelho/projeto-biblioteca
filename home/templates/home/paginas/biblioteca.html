@@ -12,10 +12,13 @@
             <h3>{{ dado.nome }}</h3>
             <p>Progresso: 30%</p>
 
-
             <div class="book-actions-biblioteca">
                 <button class="borrow-btn">Continuar</button>
-                <button class="btn-delete">Remover</button>
+
+                <form action="{% url 'remover_livro' dado.id %}" method="POST" onsubmit="return confirm('Deseja remover este livro?')">
+                    {%csrf_token%}
+                    <button class="btn-delete" >Remover</button>
+                </form>
             </div>
 
         </div>
@@ -23,3 +26,6 @@
     {% endfor %}
 </div>
 {%endblock%}
+<script>
+
+</script>

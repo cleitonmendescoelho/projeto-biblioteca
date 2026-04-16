@@ -79,8 +79,13 @@ def adicionar_biblioteca(request, livro_id):
             imagem_capa=livro.livro_imagem
         )
 
-    return redirect('biblioteca_pessoal')
+    return render(request, 'home/paginas/teste.html')
 
+def remover_livro(request,livro_id):
+    livro = get_object_or_404(MinhaBiblioteca, id=livro_id)
+    livro.delete()
+    
+    return redirect('biblioteca_pessoal')
 
 def historico(request):
     return render(request, 'home/paginas/historico.html')

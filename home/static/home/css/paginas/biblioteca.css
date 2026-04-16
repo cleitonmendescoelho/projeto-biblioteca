@@ -102,10 +102,11 @@
     }
 }
 
-.book-actions-biblioteca .btn-delete{
+form .btn-delete{
     border: solid 1px black;
     border-radius: 6px;
     background-color: red;
+    height: 80px;
 }
 
 .book-actions-biblioteca .btn-delete:hover{

@@ -12,4 +12,5 @@ urlpatterns = [
     path('historico', views.historico, name='historico'),
     path('dados', views.relatorios, name='relatorios'),
     path('adicionar-biblioteca/<int:livro_id>/', views.adicionar_biblioteca, name='adicionar_biblioteca'),
+    path('remover-livro/<int:livro_id>/', views.remover_livro, name='remover_livro')
 ]

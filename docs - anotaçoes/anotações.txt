@@ -44,6 +44,13 @@ atualizar biblioteca dinamicamente
 * Definir as informações a serem exibidas na seção
 * Definir as ações da seção que o usuário pode realizar
 
+⚙ IMPLEMENTAÇÂO
+
+
+📌 MELHORIA 
+
+
+
 ** Relatórios **
 
 * Definir as informações que vão ser processadas pelo gráfico
