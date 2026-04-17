@@ -64,20 +64,17 @@
     color: rgb(0, 255, 13);
 }
 
-.book-card-biblioteca:hover .book-actions-biblioteca {
+.book-actions-biblioteca{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     opacity: 1;
 }
 
-.book-actions-biblioteca{
-    display: flex;
-    gap: 15px;
-}
-
 .book-actions-biblioteca .borrow-btn {
-    flex: 1;
+    width: 100px;
     background-color: var(--primary-500);
     color: white;
-    padding: 8px 12px;
     border-radius: 6px;
     border: none;
     font-size: 0.75rem;
@@ -92,10 +89,6 @@
     background-color: var(--primary-700);
 }
 
-.book-actions-biblioteca .borrow-btn i {
-    margin-right: 5px;
-}
-
 @media (max-width: 767px) {
     .book-actions-biblioteca {
         opacity: 1;
@@ -103,10 +96,12 @@
 }
 
 form .btn-delete{
+    background-color: red;
     border: solid 1px black;
     border-radius: 6px;
-    background-color: red;
-    height: 80px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
 }
 
 .book-actions-biblioteca .btn-delete:hover{
