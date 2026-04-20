@@ -1,7 +1,8 @@
-from .models import MinhaBiblioteca
 from .models import UserCadastro
-from .models import Livro
 from .forms import UserCadastroForm
+from .models import Livro
+from .models import MinhaBiblioteca
+from .models import Historico
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages # Biblioteca para mensagens de erros de validação
 from django.core.exceptions import ValidationError # Biblioteca para erros de excessões de validação
@@ -78,17 +79,24 @@ def adicionar_biblioteca(request, livro_id):
             nome=livro.nome,
             imagem_capa=livro.livro_imagem
         )
-
+        
+        Historico.objects.create(
+        nome_livro = livro.nome,
+        autor = livro.autor,
+        paginas = livro.pagina_livro,
+        data = date.today()
+    )
+        
     return render(request, 'home/paginas/teste.html')
 
 def remover_livro(request,livro_id):
     livro = get_object_or_404(MinhaBiblioteca, id=livro_id)
     livro.delete()
-    
-    return redirect('biblioteca_pessoal')
+    return redirect('biblioteca_pessoal')  
 
-def historico(request):
-    return render(request, 'home/paginas/historico.html')
+def painel_historico(request):
+    livros = Historico.objects.all()
+    return render(request, 'home/paginas/historico.html', {'livros': livros})  
 
 def relatorios(request):
     return render(request, 'home/sections/relatorios.html')

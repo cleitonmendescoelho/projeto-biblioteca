@@ -9,8 +9,8 @@ urlpatterns = [
     path('senha', views.recuperacao_senha, name='recuperacao_senha'),
     path('painel', views.acesso_painel, name='acesso_painel'),
     path('bilioteca/', views.biblioteca_pessoal, name = 'biblioteca_pessoal'),
-    path('historico', views.historico, name='historico'),
+    path('historico', views.painel_historico, name='historico'),
     path('dados', views.relatorios, name='relatorios'),
     path('adicionar-biblioteca/<int:livro_id>/', views.adicionar_biblioteca, name='adicionar_biblioteca'),
-    path('remover-livro/<int:livro_id>/', views.remover_livro, name='remover_livro')
+    path('remover-livro/<int:livro_id>/', views.remover_livro, name='remover_livro'),
 ]

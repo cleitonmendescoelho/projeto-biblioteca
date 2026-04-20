@@ -27,5 +27,10 @@ class MinhaBiblioteca(models.Model):
     nome = models.CharField(max_length=120)
     imagem_capa = models.CharField(max_length=255)
     
-    
+class Historico(models.Model):
+    id = models.AutoField(primary_key=True)
+    nome_livro = models.CharField(max_length=120)
+    autor = models.CharField(max_length=120)
+    paginas = models.PositiveIntegerField()
+    data = models.DateField()
     
