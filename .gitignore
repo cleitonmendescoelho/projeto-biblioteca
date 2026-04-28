@@ -1,6 +1,7 @@
 # Profiles
 env/
 __pycache__/
+docs - anotaçoes/
 
 # Files
 requisitos.txt
