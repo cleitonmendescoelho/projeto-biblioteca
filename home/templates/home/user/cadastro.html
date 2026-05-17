@@ -1,40 +1,47 @@
 {% load static%}
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-br">
 <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" href="{%static 'home/css/user/cadastro.css'%}">
+       <link rel="stylesheet" href="{%static 'home/css/user/login.css'%}">
+       <title>Biblioteca-Digital</title>
 </head>
 <body>
-       <div class="container">
-              <form action="{% url 'cadastrar_usuario' %}" method="POST">
-                     {% csrf_token %}
-
-                     <input type="text" name="nome" placeholder="Nome" value="{{ form.nome.value|default:'' }}">
-                     {{ form.nome.errors }}
-
-                     <input type="text" name="sobrenome" placeholder="Sobrenome" value="{{ form.sobrenome.value|default:'' }}">
-                     {{ form.sobrenome.errors }}
-
-                     <input type="date" name="data_nascimento" value="{{ form.data_nascimento.value|default:'' }}">
-                     {{ form.data_nascimento.errors }}
-
-                     <input type="text" name="cpf" placeholder="CPF" value="{{ form.cpf.value|default:'' }}">
-                     {{ form.cpf.errors }}
-
-                     <input type="text" name="telefone" placeholder="Telefone" value="{{ form.telefone.value|default:'' }}">
-                     {{ form.telefone.errors }}
-
-                     <input type="email" name="email" placeholder="E-mail" value="{{ form.email.value|default:'' }}">
-                     {{ form.email.errors }}
-
-                     <input type="password" name="senha" placeholder="Senha">
-                     {{ form.senha.errors }}
-
-                     <button type="submit">Cadastrar</button>
-              </form>
+       <div class="content">
+              <div class="content-main">
+                     <div class="content-image">
+                            <img src="{%static 'home/images/capa/biblioteca.png'%}" alt="Biblioteca digital">
+                     </div>
+                     <div class="content-form">
+                            <h1>Cadastro</h1>
+                            <form action="{%url 'cadastrar_usuario'%}" method="POST">
+                                   {%csrf_token%}
+                                   <input type="text" name="nome" placeholder="Nome" required>
+                                   {{form.nome.errors}}
+                                   <input type="text" name="sobrenome" placeholder="sobrenome" required>
+                                   {{form.sobrenome.errors}}
+                                   <input type="date" name="data_nascimento" placeholder="Data_nascimento" required>
+                                   {{form.data_nascimento.errors}}
+                                   <input type="text" name="cpf" placeholder="CPF" required>
+                                   {{form.cpf.errors}}
+                                   <input type="text" name="telefone" placeholder="Telefone" required>
+                                   {{form.telefone.errors}}
+                                   <input type="text" name="email" placeholder="Email" required>
+                                   {{form.email.errors}}
+                                   <input type="password" name="senha" placeholder="Senha" required>
+                                   {{form.senha.errors}}
+                                   <div class="btn">
+                                          <button type="submit">Cadastrar</button>
+                                          {%if messages%}
+                                          {%for message in messages%}
+                                          <p class="{{message.tags}}">{{message}}</p>
+                                          {%endfor%}
+                                          {%endif%}
+                                   </div>
+                            </form>
+                     </div>
+              </div>
        </div>
 </body>
-
 </html>

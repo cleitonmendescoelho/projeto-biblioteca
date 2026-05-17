@@ -1,44 +1,50 @@
 {%load static%}
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{%static 'home/css/user/login.css'%}">
-    <title>Login</title>
+    <title>Biblioteca-Digital</title>
 </head>
 <body>
-    <div class="container">
-        <div class="login">
-            <form action="{% url 'verificar_login'%}" method="POST">
-                {%csrf_token%}
-                <input type="email" name="email" placeholder="Email" required autocomplete="on" title="teste">
-                <input type="password" name="senha" placeholder="Senha" required minlength="8">
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li class="{{ message.tags }}" style="color: aqua;">
-                        {{ message }}
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <div class="options">
-                    <a href="{% url 'cadastrar_usuario'%}" target="_blank">Criar conta</a>
-                    <a href="{% url 'recuperacao_senha'%}">Esqueci minha senha</a>
-                </div>
-                <button>Entrar</button>
+    <div class="content">
+        <div class="content-main">
+            <div class="content-image">
+                <img src="{%static 'home/images/capa/biblioteca.png'%}" alt="logo-login">
+            </div>
+
+            <div class="content-form">
+                <h1>Login</h1>
+                <form action="{%url 'verificar_login'%}" method="POST">
+                    {%csrf_token%}
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="senha" placeholder="Senha" required>
+                    {%if messages%}
+                    <ul>
+                        {%for message in messages%}
+                        <li class="{{message.tags}}">{{message}}</li>
+                        {%endfor%}
+                    </ul>
+                    {%endif%}
+                    <div class="btn">
+                        <button type="submit">Entrar</button>
+                    </div>
+                </form>
+
+                <section>
+                    <a href="{%url 'formulario_cadastro'%}">Cadastre-se</a>
+                </section>
+
                 <div class="alternativas">
                     <ion-icon name="logo-google"></ion-icon>
                     <ion-icon name="phone-portrait-outline"></ion-icon>
                     <ion-icon name="key-outline"></ion-icon>
                 </div>
-            </form>
-            
+            </div>
         </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
