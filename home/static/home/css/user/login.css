@@ -56,6 +56,10 @@ body{
     margin: 5px;
 }
 
+.content .content-form form ul{
+    list-style: none;
+}
+
 .content .content-form section{
     align-self:flex-start;
     margin-left: 38px;
@@ -68,6 +72,7 @@ body{
 
 .content .content-form section a:hover{
     color: black;
+    text-decoration: underline;
 }
 
 .content-main .content-form .btn{
@@ -95,6 +100,12 @@ body{
 .content-main .content-form .alternativas ion-icon:hover{
     color: white;
 }
+
+.error{
+    color: rgb(255, 0, 0);
+}
+
+
 
 /* Version 1 */
 

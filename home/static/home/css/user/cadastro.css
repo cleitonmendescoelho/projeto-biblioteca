@@ -40,3 +40,10 @@ body{
 .container form button:hover{
     color:white;
 }
+.sucess{
+    color:green;
+}
+
+.error{
+    color: red;
+}
