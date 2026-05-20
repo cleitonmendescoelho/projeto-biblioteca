@@ -1,19 +1,4 @@
-IMPLEMENTAÇÕES FEITAS
-
-- Forms
-- Validação de dados
-- Biblioteca messages
-- Processos de autenticação (Verificação/criptografia)
-- Referencias de arquivos - Banco de dados
-- Módulo get_object_or_404
-- Funcionalidades
-    - Cadastrar
-    - Adicionar
-    - Remover
-    - Validate (section Biblioteca) - ORM+Modal+JS
-
-
-BOAS PRATICAS APLICADAS COM BASE NO ESCOPO DO PROJETO
+# BOAS PRATICAS APLICADAS COM BASE NO ESCOPO DO PROJETO
 
 * Hierarquia de diretórios - organização
 * Utilização de layout base, propriedades ({% extends %} e {% block %}).
