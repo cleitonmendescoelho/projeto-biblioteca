@@ -16,21 +16,25 @@
                      <div class="content-form">
                             <h1>Cadastro</h1>
                             <form action="{%url 'cadastrar_usuario'%}" method="POST">
-                                   {%csrf_token%}
-                                   <input type="text" name="nome" placeholder="Nome" required>
-                                   {{form.nome.errors}}
-                                   <input type="text" name="sobrenome" placeholder="sobrenome" required>
-                                   {{form.sobrenome.errors}}
-                                   <input type="date" name="data_nascimento" placeholder="Data_nascimento" required>
+                                  {%csrf_token%}
+                                   <input type="text" name="first_name" placeholder="Nome" value="{{ form.first_name.value|default_if_none:'' }}" required>
+                                   {{form.first_name.errors}}
+                                   <input type="text" name="last_name" placeholder="Sobrenome" value="{{ form.last_name.value|default_if_none:'' }}" required>
+                                   {{form.last_name.errors}}
+                                   <input type="date" name="data_nascimento" placeholder="Data_nascimento" value="{{ form.data_nascimento.value|date:'Y-m-d' }}" required>
                                    {{form.data_nascimento.errors}}
-                                   <input type="text" name="cpf" placeholder="CPF" required>
+                                   <input type="text" name="cpf" placeholder="CPF" value="{{ form.cpf.value|default_if_none:'' }}" required>
                                    {{form.cpf.errors}}
-                                   <input type="text" name="telefone" placeholder="Telefone" required>
+                                   <input type="text" name="telefone" placeholder="Telefone" value="{{ form.telefone.value|default_if_none:'' }}" required>
                                    {{form.telefone.errors}}
-                                   <input type="text" name="email" placeholder="Email" required>
+                                   <input type="text" name="username" placeholder="Nome de Usuario" value="{{ form.username.value|default_if_none:'' }}" required>
+                                   {{form.username.errors}}
+                                   <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}" required>
                                    {{form.email.errors}}
-                                   <input type="password" name="senha" placeholder="Senha" required>
-                                   {{form.senha.errors}}
+                                   <input type="password" name="password1" placeholder="Senha" required>
+                                   {{form.password1.errors}}
+                                   <input type="password" name="password2" placeholder="Confirme a senha" required>
+                                   {{form.password2.errors}}
                                    <div class="btn">
                                           <button type="submit">Cadastrar</button>
                                           {%if messages%}
@@ -39,6 +43,7 @@
                                           {%endfor%}
                                           {%endif%}
                                    </div>
+                            </form>
                             </form>
                      </div>
               </div>
