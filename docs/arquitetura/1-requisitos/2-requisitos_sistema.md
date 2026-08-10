@@ -141,4 +141,3 @@ Status (concluido ou pendente)
 Permitir que o usuario filte por data, ano e mês
 
 Permitir que usuário faça o download do histórico em formato PDF
-
