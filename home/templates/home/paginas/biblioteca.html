@@ -1,31 +1,33 @@
 {%extends 'home/paginas/index.html'%}
 
-{% load static%}
+{% load static %}
 
-{% block content%}
+{% block content %}
 <div class="books-grid-biblioteca">
-    {% for dado in dados %}
+    {% for livro in dados %}
     <div class="book-card-biblioteca">
-        <img src="{% static dado.imagem_capa %}" alt="{{ dado.nome }}">
+        <img src="{% static livro.imagem_capa %}" alt="{{ livro.nome }}">
 
         <div class="book-info-biblioteca">
-            <h3>{{ dado.nome }}</h3>
+            <h3>{{ livro.nome }}</h3>
             <p>Progresso: 30%</p>
 
             <div class="book-actions-biblioteca">
                 <button class="borrow-btn">Continuar</button>
 
-                <form action="{% url 'remover_livro' dado.id %}" method="POST" onsubmit="return confirm('Deseja remover este livro?')">
-                    {%csrf_token%}
-                    <button class="btn-delete" >Remover</button>
+                <form action="{% url 'remover_livro' livro.id %}" method="POST" onsubmit="return confirm('Deseja remover este livro?')">
+                    {% csrf_token %}
+                    <button class="btn-delete">Remover</button>
                 </form>
             </div>
 
         </div>
     </div>
+    {% empty %}
+    <p>Você ainda não adicionou nenhum livro à sua biblioteca.</p>
     {% endfor %}
 </div>
-{%endblock%}
+{% endblock %}
 <script>
 
 </script>

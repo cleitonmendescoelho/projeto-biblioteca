@@ -68,13 +68,13 @@ def acesso_painel(request):
 
 @login_required
 def biblioteca_pessoal(request):
-    dados = MinhaBiblioteca.objects.all()
+    dados = MinhaBiblioteca.objects.filter(usuario=request.user)
     return render(request, 'home/paginas/biblioteca.html', {'dados': dados})
 
 @login_required
 def adicionar_biblioteca(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
-    if not MinhaBiblioteca.objects.filter(id_livro=livro).exists():
+    if not MinhaBiblioteca.objects.filter(id_livro=livro, usuario=request.user).exists():
 
         MinhaBiblioteca.objects.create(
             usuario=request.user,
@@ -105,8 +105,8 @@ def remover_livro(request,livro_id):
 
 @login_required
 def painel_historico(request):
-    livros = Historico.objects.all()
-    return render(request, 'home/paginas/historico.html', {'livros': livros})  
+    livros = Historico.objects.filter(usuario=request.user).order_by('-data', '-id')
+    return render(request, 'home/paginas/historico.html', {'livros': livros})
 
 @login_required
 def relatorios(request):
