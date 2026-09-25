@@ -1,179 +1,84 @@
-body{
-    /* padding: 220px;
-    margin-left: 400px; */
+* { box-sizing: border-box; }
 
-    padding: 100px;
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 140px 24px;
     background-color: whitesmoke;
-}
-
-
-
-.content{
-    display: flex;
-    justify-content: center;
-}
-
-.content-main{
-    display: flex;
-    width: 900px;
-    /* gap: 20px; */
-}
-
-.content-main .content-image{
-    width:800px;
-}
-
-.content-main .content-image img{
-    width: 600px;
-}
-
-.content-main .content-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #16222A;  /*fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 100%;
-    height: 600px;
-}
-
-.content-main .content-form h1{
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
 }
 
-.content-main .content-form form{
+.content { 
+    display: flex; 
+    justify-content: center;
+ }
+
+.content-main {
     display: flex;
-    flex-direction:column ; 
+    width: min(100%, 1000px);
+    align-items: stretch;
 }
 
-.content .content-form form input{
-    width: 220px;
-    height: 30px;
-    border:solid 1px black;
-    margin: 5px;
+.content-image { flex: 1 1 55%; }
+.content-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.content-form {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+    background: linear-gradient(to right, #3A6073, #16222A);
 }
 
-.content .content-form form ul{
+.content-form h1 { margin: 0 0 24px; color: white; text-align: center; }
+.formulario { display: flex; flex-direction: column; gap: 10px; }
+.field-group { width: 100%; }
+
+.field-group input {
+    width: 100%;
+    height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #1f2933;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.field-group input:focus { outline: 2px solid #93c5fd; outline-offset: 1px; }
+
+.form-messages {
+    margin: 0;
+    padding: 0;
     list-style: none;
+    color: #fecaca;
+    font-size: 0.9rem;
 }
 
-.content .content-form section{
-    align-self:flex-start;
-    margin-left: 38px;
-}
-
-.content .content-form section a{
-    text-decoration: none;
-    color: white;
-}
-
-.content .content-form section a:hover{
-    color: black;
-    text-decoration: underline;
-}
-
-.content-main .content-form .btn{
-    margin: 5px;
-}
-
-.content-main .content-form .btn button{
-    width: 230px;
-    height: 30px;
-    border: solid 1px black;
-    border-radius:5px;
-    background-color: rgb(5, 163, 0);
-    color: white;
-    
-}
-
-.content-main .content-form .alternativas{
-    margin: 30px;
-}
-
-.content-main .content-form .alternativas ion-icon{
-    font-size: 25px;
-}
-
-.content-main .content-form .alternativas ion-icon:hover{
-    color: white;
-}
-
-.error{
-    color: rgb(255, 0, 0);
-}
-
-
-
-/* Version 1 */
-
-/* .container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 400px;
-    border-radius:20px;
-    background: #000046;
-    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  
-    background: linear-gradient(to right, #1CB5E0, #000046);
-
-}
-
-.container .login form{
-    display: flex;
-    flex-direction: column;
-}
-
-.container .login form input{
-    width: 400px;
-    height: 30px;
-    margin: 5px;
-    border: solid 1px black;
+.btn { margin-top: 4px; }
+.btn button {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #075b20;
     border-radius: 5px;
-}
-
-.container .login form .options{
-    display: flex;
-    flex-direction: column;
-}
-
-.container .login form .options a{
-    text-decoration: none;
-    color: black;
-}
-
-.container .login form .options a:hover{
+    background-color: #059669;
     color: white;
+    font: inherit;
+    cursor: pointer;
 }
+.btn button:hover { background-color: #047857; }
 
-.container .login form button{
-    width: 410px;
-    height: 25px;
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: rgb(0, 106, 255);
+.content-form section { margin-top: 16px; text-align: center; }
+.content-form section a { color: white; text-decoration: none; }
+.content-form section a:hover { color: #bbf7d0; text-decoration: underline; }
+
+.alternativas { display: flex; justify-content: center; gap: 16px; margin-top: 28px; }
+.alternativas ion-icon { color: white; font-size: 25px; }
+.alternativas ion-icon:hover { color: #bbf7d0; }
+
+@media (max-width: 760px) {
+    body { padding: 24px 16px; }
+    .content-main { flex-direction: column; }
+    .content-image { display: none; }
 }
-
-.container .login form button:hover{
-    color:white;
-}
-
-.alternativas{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.alternativas ion-icon{
-    font-size: 25px;
-    margin-left:15px;
-}
-
-.alternativas ion-icon:hover{
-    color: white;
-} */
 
 

@@ -16,12 +16,16 @@
 
             <div class="content-form">
                 <h1>Login</h1>
-                <form action="{%url 'verificar_login'%}" method="POST">
+                <form action="{%url 'verificar_login'%}" method="POST" class="formulario">
                     {%csrf_token%}
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="senha" placeholder="Senha" required>
+                    <div class="field-group">
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="field-group">
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
                     {%if messages%}
-                    <ul>
+                    <ul class="form-messages" role="alert">
                         {%for message in messages%}
                         <li class="{{message.tags}}">{{message}}</li>
                         {%endfor%}
