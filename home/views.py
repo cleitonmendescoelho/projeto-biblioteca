@@ -11,6 +11,12 @@ from django.core.validators import validate_email
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
+
+def termo_busca(request):
+    """Obtém o termo de pesquisa sem espaços desnecessários."""
+    return request.GET.get('q', '').strip()
 
 def login_usuario(request):
     if request.user.is_authenticated:
@@ -64,12 +70,32 @@ def recuperacao_senha(request):
 @login_required
 def acesso_painel(request):
     dados = Livro.objects.all().order_by('-ordem')
-    return render(request, 'home/paginas/index.html', {'dados':dados})
+    busca = termo_busca(request)
+
+    if busca:
+        dados = dados.filter(
+            Q(nome__icontains=busca)
+            | Q(autor__icontains=busca)
+            | Q(genero__icontains=busca)
+            | Q(editora__icontains=busca)
+            | Q(descricao__icontains=busca)
+        )
+
+    return render(request, 'home/paginas/index.html', {'dados': dados, 'busca': busca})
 
 @login_required
 def biblioteca_pessoal(request):
     dados = MinhaBiblioteca.objects.filter(usuario=request.user)
-    return render(request, 'home/paginas/biblioteca.html', {'dados': dados})
+    busca = termo_busca(request)
+
+    if busca:
+        dados = dados.filter(
+            Q(nome__icontains=busca)
+            | Q(id_livro__autor__icontains=busca)
+            | Q(id_livro__genero__icontains=busca)
+        )
+
+    return render(request, 'home/paginas/biblioteca.html', {'dados': dados, 'busca': busca})
 
 @login_required
 def adicionar_biblioteca(request, livro_id):
@@ -106,7 +132,14 @@ def remover_livro(request,livro_id):
 @login_required
 def painel_historico(request):
     livros = Historico.objects.filter(usuario=request.user).order_by('-data', '-id')
-    return render(request, 'home/paginas/historico.html', {'livros': livros})
+    busca = termo_busca(request)
+
+    if busca:
+        livros = livros.filter(
+            Q(nome_livro__icontains=busca) | Q(autor__icontains=busca)
+        )
+
+    return render(request, 'home/paginas/historico.html', {'livros': livros, 'busca': busca})
 
 @login_required
 def relatorios(request):
@@ -115,9 +148,3 @@ def relatorios(request):
 def sair(request):
     logout(request)
     return redirect('login')
-
-
-        
-        
-
-

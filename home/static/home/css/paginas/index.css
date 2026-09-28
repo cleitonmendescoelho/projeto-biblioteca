@@ -66,6 +66,18 @@ body {
     position: relative;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .search-input {
     padding-left: 2.5rem;
     padding-right: 1rem;
@@ -88,6 +100,12 @@ body {
     left: 0.75rem;
     top: 0.75rem;
     color: #9ca3af;
+}
+
+.search-empty {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #6b7280;
 }
 
 .user-avatar {

@@ -17,10 +17,11 @@
                         </select>
                         <i class="fas fa-chevron-down select-icon"></i>
                     </div>
-                    <div class="filter-group">
-                        <input type="text" placeholder="Buscar livro..." class="filter-input">
-                        <i class="fas fa-search filter-icon"></i>
-                    </div>
+                    <form class="filter-group" method="get" role="search">
+                        <label class="sr-only" for="busca-historico">Buscar no histórico</label>
+                        <input id="busca-historico" name="q" type="search" value="{{ busca }}"
+                            placeholder="Buscar livro..." class="filter-input">
+                    </form>
                 </div>
             </div>
             <div class="table-container">

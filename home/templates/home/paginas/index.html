@@ -24,10 +24,11 @@
                     <p class="subtitle">Sistema de Gestão de Acervo</p>
                 </div>
                 <div class="header-actions">
-                    <div class="search-container">
-                        <input type="text" placeholder="Buscar livro..." class="search-input">
-                        <i class="fas fa-search search-icon"></i>
-                    </div>
+                    <form class="search-container" method="get" role="search">
+                        <label class="sr-only" for="busca-livro">Buscar livro</label>
+                        <input id="busca-livro" name="q" type="search" value="{{ busca }}"
+                            placeholder="Buscar livro..." class="search-input">
+                    </form>
                     <div class="user-avatar">
                         <i class="fas fa-user user-icon"></i>
                     </div>
@@ -119,6 +120,9 @@
                         </div>
                         {%endfor%}
                     </div>
+                    {% if busca and not dados %}
+                    <p class="search-empty">Nenhum livro encontrado para “{{ busca }}”.</p>
+                    {% endif %}
 
                     <!-- Modal-Info -->
                     <div id="modal" class="modal">

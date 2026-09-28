@@ -24,7 +24,11 @@
         </div>
     </div>
     {% empty %}
+    {% if busca %}
+    <p>Nenhum livro encontrado para “{{ busca }}”.</p>
+    {% else %}
     <p>Você ainda não adicionou nenhum livro à sua biblioteca.</p>
+    {% endif %}
     {% endfor %}
 </div>
 {% endblock %}
