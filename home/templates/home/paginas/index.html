@@ -76,14 +76,14 @@
                             <p class="stat-label">Livros cadastrados</p>
                             <p class="stat-value">1,248</p>
                         </div>
-                        <div class="stat-item">
+                        <!-- <div class="stat-item">
                             <p class="stat-label">Empréstimos ativos</p>
                             <p class="stat-value">87</p>
                         </div>
                         <div class="stat-item">
                             <p class="stat-label">Atrasos</p>
                             <p class="stat-value">12</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </aside>
@@ -98,8 +98,9 @@
                             <img src="{% static dado.livro_imagem %}" alt="{{ dado.nome }}">
                             <div class="book-info">
                                 <h3>{{dado.nome}}</h3>
-                                <p class="author">Autor: {{dado.autor}}</p>
-                                <p class="description">Gênero: {{dado.genero}}</p>
+                                
+                                <!-- <p class="author">Autor: {{dado.autor}}</p> -->
+                                <!-- <p class="description">{{dado.genero}}</p> -->
                             </div>
                             <div class="book-actions">
                                 <button class="borrow-btn" onclick="abrirModal(
@@ -111,7 +112,7 @@
                                     '{{ dado.editora|escapejs }}',
                                     '{{ dado.pagina_livro }}'
                                 )">
-                                    <i class="fas fa-book-open"></i> Emprestar
+                                    <i class="fas fa-book-open"></i> Ler livro
                                 </button>
                                 <button class="favorite-btn">
                                     <i class="fas fa-heart"></i>
@@ -132,11 +133,35 @@
                             <h2 id="modal-nome"></h2>
 
                             <div class="info">
-                                <p><strong>Autor:</strong> <span id="modal-autor"></span></p>
+                                <table>
+                                    <tr>
+                                        <th>nome</th>
+                                        <td id="modal-autor"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Gênero</th>
+                                        <td id="modal-genero"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Páginas</th>
+                                        <td id="modal-paginas"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Editora</th>
+                                        <td id="modal-editora"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th></th>
+                                        <td id="modal-descricao"></td>
+                                    </tr>
+                                </table>
+                                <!-- <p><strong>Autor:</strong> <span id="modal-autor"></span></p>
                                 <p><strong>Gênero:</strong> <span id="modal-genero"></span></p>
                                 <p><strong>Páginas:</strong> <span id="modal-paginas"></span></p>
                                 <p><strong>Editora:</strong> <span id="modal-editora"></span></p>
-                                <p><strong>Descrição:</strong> <span id="modal-descricao"></span></p>
+                                <p><strong>Descrição:</strong> <span id="modal-descricao"></span></p> -->
                             </div>
 
                             <button onclick="lerLivro()" class="ler">Ler</button>
