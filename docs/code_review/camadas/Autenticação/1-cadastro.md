@@ -1,5 +1,3 @@
-Front-End - Cadastro.html
-
 * Campos sem <label>: e-mail e senha dependem apenas de placeholder, o que prejudica acessibilidade e desaparece ao digitar.
 
 * Faltam autocomplete="email" e autocomplete="current-password", importantes para gerenciadores de senha e usabilidade.
