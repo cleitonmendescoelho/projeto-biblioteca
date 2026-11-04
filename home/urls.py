@@ -10,7 +10,9 @@ urlpatterns = [
     path('painel', views.acesso_painel, name='acesso_painel'),
     path('bilioteca/', views.biblioteca_pessoal, name = 'biblioteca_pessoal'),
     path('historico', views.painel_historico, name='historico'),
-    path('dados', views.relatorios, name='relatorios'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    # Mantém a URL antiga funcional para links já salvos.
+    path('dados', views.dashboard, name='relatorios'),
     path('adicionar-biblioteca/<int:livro_id>/', views.adicionar_biblioteca, name='adicionar_biblioteca'),
     path('remover-livro/<int:livro_id>/', views.remover_livro, name='remover_livro'),
 ]

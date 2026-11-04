@@ -1,0 +1,47 @@
+{% extends 'home/paginas/index.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'home/css/paginas/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <section class="dashboard-card" aria-labelledby="dashboard-title">
+        <div class="dashboard-header">
+            <div>
+                <h2 id="dashboard-title">Dashboard de leitura</h2>
+                <p>Acompanhe quantos livros você leu ao longo do tempo.</p>
+            </div>
+            <div class="reading-total" aria-label="Total de livros lidos">
+                <span>Total lido</span>
+                <strong>{{ total_livros_lidos }}</strong>
+            </div>
+        </div>
+
+        {% if chart_data %}
+        <figure class="chart-wrapper">
+            <canvas
+                id="leiturasChart"
+                aria-label="Quantidade de livros lidos por data"
+                data-reading-chart
+                data-labels-id="chart-labels"
+                data-values-id="chart-values"
+                role="img">
+            </canvas>
+            <figcaption>Quantidade de livros registrados por data.</figcaption>
+        </figure>
+        {% else %}
+        <p class="chart-empty">Ainda não há leituras registradas na sua biblioteca.</p>
+        {% endif %}
+    </section>
+</main>
+
+{{ chart_labels|json_script:"chart-labels" }}
+{{ chart_data|json_script:"chart-values" }}
+{% endblock %}
+
+{% block extra_scripts %}
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script defer src="{% static 'home/js/dashboard.js' %}"></script>
+{% endblock %}
