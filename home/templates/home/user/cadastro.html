@@ -11,7 +11,7 @@
        <div class="content">
               <div class="content-main">
                      <div class="content-image">
-                            <img src="{%static 'home/images/capa/biblioteca.png'%}" alt="Biblioteca digital">
+                            <img src="{%static 'home/images/capa/biblioteca.png'%}" alt="Logo da biblioteca.web">
                      </div>
                      <div class="content-form">
                             <h1>Cadastro</h1>
@@ -21,39 +21,48 @@
                                    <div class="form-errors" role="alert">{{ form.non_field_errors }}</div>
                                    {% endif %}
                                    <div class="field-group">
-                                          <input type="text" name="first_name" placeholder="Nome" value="{{ form.first_name.value|default_if_none:'' }}" required {% if form.first_name.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Nome</label>
+                                          <input type="text" name="first_name" placeholder="Nome" value="{{ form.first_name.value|default_if_none:'' }}" required autocomplete="given-name" {% if form.first_name.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.first_name.errors %}<div class="field-errors" role="alert">{{ form.first_name.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="text" name="last_name" placeholder="Sobrenome" value="{{ form.last_name.value|default_if_none:'' }}" required {% if form.last_name.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Sobrenome</label>
+                                          <input type="text" name="last_name" placeholder="Sobrenome" value="{{ form.last_name.value|default_if_none:'' }}" required autocomplete="family-name" {% if form.last_name.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.last_name.errors %}<div class="field-errors" role="alert">{{ form.last_name.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="date" name="data_nascimento" value="{{ form.data_nascimento.value|date:'Y-m-d' }}" required {% if form.data_nascimento.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Data de Nascimento</label>
+                                          <input type="date" name="data_nascimento" value="{{ form.data_nascimento.value|date:'Y-m-d' }}" required autocomplete="bday" {% if form.data_nascimento.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.data_nascimento.errors %}<div class="field-errors" role="alert">{{ form.data_nascimento.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="text" name="cpf" placeholder="CPF" value="{{ form.cpf.value|default_if_none:'' }}" required {% if form.cpf.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">CPF</label>
+                                          <input type="text" name="cpf" placeholder="000.000.00-00" value="{{ form.cpf.value|default_if_none:'' }}" required autocomplete="off" {% if form.cpf.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.cpf.errors %}<div class="field-errors" role="alert">{{ form.cpf.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="text" name="telefone" placeholder="Telefone" value="{{ form.telefone.value|default_if_none:'' }}" required {% if form.telefone.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Telefone</label>
+                                          <input type="text" name="telefone" placeholder="Telefone" value="{{ form.telefone.value|default_if_none:'' }}" required autocomplete="tel" {% if form.telefone.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.telefone.errors %}<div class="field-errors" role="alert">{{ form.telefone.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="text" name="username" placeholder="Nome de usuário" value="{{ form.username.value|default_if_none:'' }}" required {% if form.username.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Nome de Usuário</label>
+                                          <input type="text" name="username" placeholder="Nome de usuário" value="{{ form.username.value|default_if_none:'' }}" autocomplete="username" required {% if form.username.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.username.errors %}<div class="field-errors" role="alert">{{ form.username.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="email" name="email" placeholder="E-mail" value="{{ form.email.value|default_if_none:'' }}" required {% if form.email.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Email</label>
+                                          <input type="email" name="email" placeholder="E-mail" value="{{ form.email.value|default_if_none:'' }}" required autocomplete="email" {% if form.email.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.email.errors %}<div class="field-errors" role="alert">{{ form.email.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="password" name="password1" placeholder="Senha" required {% if form.password1.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Senha</label>
+                                          <input type="password" name="password1" placeholder="Senha" required autocomplete="new-password" {% if form.password1.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.password1.errors %}<div class="field-errors" role="alert">{{ form.password1.errors }}</div>{% endif %}
                                    </div>
                                    <div class="field-group">
-                                          <input type="password" name="password2" placeholder="Confirme a senha" required {% if form.password2.errors %}aria-invalid="true"{% endif %}>
+                                          <label for="">Confirmação de Senha</label>
+                                          <input type="password" name="password2" placeholder="Confirme a senha" required autocomplete="new-password" {% if form.password2.errors %}aria-invalid="true"{% endif %}>
                                           {% if form.password2.errors %}<div class="field-errors" role="alert">{{ form.password2.errors }}</div>{% endif %}
                                    </div>
                                    <div class="btn">
@@ -64,6 +73,7 @@
                                           {%endfor%}
                                           {%endif%}
                                    </div>
+                                  
                             </form>
                      </div>
               </div>

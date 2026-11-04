@@ -27,7 +27,12 @@ body {
 
 .content-form h1 { margin: 0 0 24px; color: white; text-align: center; }
 .formulario { display: flex; flex-direction: column; gap: 10px; }
-.field-group { width: 100%; } 
+.field-group { width: 100%; }
+
+ label{
+    color: white;
+    margin: 5px;
+}
 
 .field-group input {
     width: 100%;
