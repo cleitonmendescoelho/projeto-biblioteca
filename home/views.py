@@ -11,7 +11,7 @@ from django.core.validators import validate_email
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Count, Q
 
 
 def termo_busca(request):
@@ -142,8 +142,30 @@ def painel_historico(request):
     return render(request, 'home/paginas/historico.html', {'livros': livros, 'busca': busca})
 
 @login_required
-def relatorios(request):
-    return render(request, 'home/sections/relatorios.html')
+def dashboard(request):
+    """Exibe a evolução diária das leituras do usuário autenticado."""
+    leituras_por_data = (
+        Historico.objects.filter(usuario=request.user)
+        .values('data')
+        .annotate(total=Count('id'))
+        .order_by('data')
+    )
+    chart_labels = []
+    chart_data = []
+
+    for leitura in leituras_por_data:
+        chart_labels.append(leitura['data'].strftime('%d/%m/%Y'))
+        chart_data.append(leitura['total'])
+
+    return render(
+        request,
+        'home/paginas/dashboard.html',
+        {
+            'chart_labels': chart_labels,
+            'chart_data': chart_data,
+            'total_livros_lidos': sum(chart_data),
+        },
+    )
 
 def sair(request):
     logout(request)

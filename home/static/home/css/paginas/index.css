@@ -192,28 +192,6 @@ body {
     width: 1.25rem;
 }
 
-/* Estatisticas */
-.stats-card {
-    margin-top: 1.5rem;
-}
-
-.stats-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-.stat-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: rgb(0, 110, 255);
-}
-
 /* Catalogo - Livros */
 
  .main-content {

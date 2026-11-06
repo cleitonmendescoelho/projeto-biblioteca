@@ -8,9 +8,9 @@
     <title>Biblioteca Digital</title>
     <link rel="stylesheet" href="{%static 'home/css/paginas/index.css'%}">
     <link rel="stylesheet" href="{%static 'home/css/paginas/historico.css'%}">
-    <link rel="stylesheet" href="{%static 'home/css/paginas/relatorios.css'%}">
     <link rel="stylesheet" href="{%static 'home/css/paginas/biblioteca.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_head %}{% endblock %}
 </head>
 
 <body>
@@ -60,31 +60,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{% url 'relatorios'%}" class="menu-item">
+                            <a href="{% url 'dashboard'%}" class="menu-item">
                                 <i class="fas fa-chart-bar menu-icon"></i>
-                                <span>Relatórios</span>
+                                <span>Dashboard</span>
                             </a>
                         </li>
                     </ul>
-                </div>
-
-                <!-- Estatisticas -->
-                <div class="stats-card">
-                    <h2 class="sidebar-title">Estatísticas</h2>
-                    <div class="stats-list">
-                        <div class="stat-item">
-                            <p class="stat-label">Livros cadastrados</p>
-                            <p class="stat-value">1,248</p>
-                        </div>
-                        <!-- <div class="stat-item">
-                            <p class="stat-label">Empréstimos ativos</p>
-                            <p class="stat-value">87</p>
-                        </div>
-                        <div class="stat-item">
-                            <p class="stat-label">Atrasos</p>
-                            <p class="stat-value">12</p>
-                        </div> -->
-                    </div>
                 </div>
             </aside>
 
@@ -219,6 +200,7 @@
 
         // 
     </script>
+    {% block extra_scripts %}{% endblock %}
 </body>
 
 </html>
